@@ -1,18 +1,25 @@
 cmake_minimum_required(VERSION 3.21)
-project(CrossPlatformSignalAnalyzer CXX)
+project(CrossPlatformSignalAnalyzer C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_GUI "Build Qt 6 dashboard" OFF)
 
 find_package(Threads REQUIRED)
-find_package(SQLite3 REQUIRED)
 
 include(FetchContent)
 FetchContent_Declare(googletest
   URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip)
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
+
+# SQLite amalgamation — bundled for zero external dependency on all platforms.
+# third_party/sqlite3.c + sqlite3.h are checked in; no system SQLite needed.
+add_library(sqlite3_bundled STATIC third_party/sqlite3.c)
+target_include_directories(sqlite3_bundled PUBLIC third_party)
+if(UNIX)
+  target_link_libraries(sqlite3_bundled PUBLIC dl)
+endif()
 
 # Core signal processing library
 add_library(signal_core STATIC
@@ -21,9 +28,13 @@ add_library(signal_core STATIC
   src/SqliteLogger.cpp
   src/SignalProcessor.cpp
 )
-target_include_directories(signal_core PUBLIC src)
-target_link_libraries(signal_core PUBLIC Threads::Threads SQLite::SQLite3)
-target_compile_options(signal_core PRIVATE -Wall -Wextra)
+target_include_directories(signal_core PUBLIC src third_party)
+target_link_libraries(signal_core PUBLIC Threads::Threads sqlite3_bundled)
+if(MSVC)
+  target_compile_options(signal_core PRIVATE /W3)
+else()
+  target_compile_options(signal_core PRIVATE -Wall -Wextra)
+endif()
 
 # CLI runner
 add_executable(signal_analyzer src/main.cpp)

@@ -16,13 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install SQLite3 (Linux)
-        if: runner.os == 'Linux'
-        run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends libsqlite3-dev
-
-      - name: Install SQLite3 (Windows)
-        if: runner.os == 'Windows'
-        run: choco install sqlite --no-progress -y
+      # SQLite is bundled via amalgamation in third_party/ — no system install needed.
 
       - name: Configure CMake
         run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_DEFAULT_CMP0135=NEW

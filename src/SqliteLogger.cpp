@@ -1,7 +1,7 @@
 #include "SqliteLogger.h"
 #include <chrono>
 #include <ctime>
-#include <sqlite3.h>
+#include "sqlite3.h"
 #include <stdexcept>
 
 SqliteLogger::SqliteLogger(const std::string& db_path) {
