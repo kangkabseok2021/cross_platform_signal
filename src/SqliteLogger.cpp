@@ -36,7 +36,13 @@ void SqliteLogger::initSchema() {
 void SqliteLogger::log(const RunRecord& rec) {
     auto now = std::chrono::system_clock::now();
     std::time_t t = std::chrono::system_clock::to_time_t(now);
-    char ts[32]; std::strftime(ts, sizeof(ts), "%Y-%m-%dT%H:%M:%S", std::gmtime(&t));
+    char ts[32];
+#ifdef _MSC_VER
+    struct tm tm_buf{}; gmtime_s(&tm_buf, &t);
+    std::strftime(ts, sizeof(ts), "%Y-%m-%dT%H:%M:%S", &tm_buf);
+#else
+    std::strftime(ts, sizeof(ts), "%Y-%m-%dT%H:%M:%S", std::gmtime(&t));
+#endif
 
     sqlite3_stmt* stmt = nullptr;
     auto* db = reinterpret_cast<sqlite3*>(db_);

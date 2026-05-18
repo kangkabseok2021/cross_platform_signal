@@ -5,6 +5,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_GUI "Build Qt 6 dashboard" OFF)
 
+# MSVC: define M_PI and friends from <cmath>
+if(MSVC)
+  add_compile_definitions(_USE_MATH_DEFINES _CRT_SECURE_NO_WARNINGS)
+endif()
+
 find_package(Threads REQUIRED)
 
 include(FetchContent)
