@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../src/FftAnalyser.h"
+#include <algorithm>
 #include <cmath>
 #include <vector>
 

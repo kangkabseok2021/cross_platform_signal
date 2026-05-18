@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "../src/SyntheticSource.h"
 #include "../src/CsvFileSource.h"
+#include <algorithm>
 #include <cmath>
 #include <filesystem>
 #include <fstream>
