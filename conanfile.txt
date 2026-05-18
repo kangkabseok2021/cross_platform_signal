@@ -1,0 +1,21 @@
+# Conan 2 dependency manifest.
+# For Conan-based builds (replaces the FetchContent GoogleTest and adds FFTW3):
+#   pip install conan
+#   conan profile detect
+#   conan install . --output-folder=build --build=missing
+#   cmake -B build --preset conan-release
+#   cmake --build build
+
+[requires]
+fftw/3.3.10
+gtest/1.14.0
+
+[options]
+fftw/*:precision=double
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout
