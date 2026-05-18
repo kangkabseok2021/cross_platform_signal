@@ -40,26 +40,29 @@ TEST(SyntheticSourceTest, SequentialReadsAreContinuous) {
 
 TEST(CsvFileSourceTest, ReadsTwoValues) {
     auto tmp = std::filesystem::temp_directory_path() / "test_sig.csv";
+    { std::ofstream f(tmp); f << "1.5\n2.5\n3.5\n"; }
+    std::vector<double> v;
     {
-        std::ofstream f(tmp);
-        f << "1.5\n2.5\n3.5\n";
-    }
-    CsvFileSource csv(tmp.string(), 1000.0);
-    auto v = csv.read(2);
+        CsvFileSource csv(tmp.string(), 1000.0);
+        v = csv.read(2);
+    }  // csv destroyed here — ifstream closed, file lock released on Windows
+    std::filesystem::remove(tmp);
     EXPECT_EQ(v.size(), 2u);
     EXPECT_NEAR(v[0], 1.5, 1e-9);
     EXPECT_NEAR(v[1], 2.5, 1e-9);
-    std::filesystem::remove(tmp);
 }
 
 TEST(CsvFileSourceTest, PadsWithZerosWhenExhausted) {
     auto tmp = std::filesystem::temp_directory_path() / "test_short.csv";
     { std::ofstream f(tmp); f << "9.0\n"; }
-    CsvFileSource csv(tmp.string(), 1000.0);
-    auto v = csv.read(3);
+    std::vector<double> v;
+    {
+        CsvFileSource csv(tmp.string(), 1000.0);
+        v = csv.read(3);
+    }  // csv destroyed — file released before remove
+    std::filesystem::remove(tmp);
     EXPECT_EQ(v.size(), 3u);
     EXPECT_NEAR(v[0], 9.0, 1e-9);
     EXPECT_EQ(v[1], 0.0);
     EXPECT_EQ(v[2], 0.0);
-    std::filesystem::remove(tmp);
 }
