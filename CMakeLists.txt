@@ -53,13 +53,40 @@ if(BUILD_GUI)
   set_target_properties(signal_dashboard PROPERTIES AUTOMOC ON AUTOUIC ON)
 endif()
 
+# Optical positioning core (HAL + toolpath + FSM + telemetry)
+add_library(optical_core STATIC
+  src/hal/SpindleMotor.cpp
+  src/hal/LinearAxis.cpp
+  src/hal/PressureSensor.cpp
+  src/hal/SafetyInterlock.cpp
+  src/optical/ToolpathGenerator.cpp
+  src/optical/PositioningFsm.cpp
+  src/optical/TelemetryLogger.cpp
+)
+target_include_directories(optical_core PUBLIC src)
+target_link_libraries(optical_core PUBLIC Threads::Threads)
+if(MSVC)
+  target_compile_options(optical_core PRIVATE /W3)
+else()
+  target_compile_options(optical_core PRIVATE -Wall -Wextra)
+endif()
+
 # Tests
 enable_testing()
+include(GoogleTest)
+
 add_executable(test_signal
   tests/test_fft.cpp
   tests/test_butterworth.cpp
   tests/test_sources.cpp
 )
 target_link_libraries(test_signal PRIVATE signal_core GTest::gtest_main)
-include(GoogleTest)
 gtest_discover_tests(test_signal)
+
+add_executable(test_optical
+  tests/test_toolpath.cpp
+  tests/test_positioning_fsm.cpp
+  tests/test_hal.cpp
+)
+target_link_libraries(test_optical PRIVATE optical_core GTest::gtest_main)
+gtest_discover_tests(test_optical)
