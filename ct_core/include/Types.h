@@ -2,6 +2,7 @@
 #include <vector>
 #include <span>
 #include <cstddef>
+#include <cstdint>
 
 namespace ct {
 
@@ -31,6 +32,6 @@ struct Image {
     float  at(std::size_t x, std::size_t y) const { return data[y * size + x]; }
 };
 
-enum class FilterType { RamLak, SheppLogan };
+enum class FilterType : std::uint8_t { RamLak, SheppLogan };
 
 } // namespace ct

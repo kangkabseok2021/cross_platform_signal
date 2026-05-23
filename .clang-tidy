@@ -5,7 +5,6 @@ Checks: >
   modernize-use-default-member-init,
   modernize-use-emplace,
   performance-*,
-  readability-identifier-naming,
   -cppcoreguidelines-avoid-magic-numbers,
   -cppcoreguidelines-pro-bounds-pointer-arithmetic,
   -cppcoreguidelines-pro-type-reinterpret-cast,
@@ -14,13 +13,3 @@ Checks: >
 WarningsAsErrors: ''
 
 HeaderFilterRegex: '(ct_core|ct_viewer)/.*\.(h|hpp)$'
-
-CheckOptions:
-  - key:   readability-identifier-naming.ClassCase
-    value: CamelCase
-  - key:   readability-identifier-naming.FunctionCase
-    value: camelCase
-  - key:   readability-identifier-naming.MemberPrefix
-    value: m_
-  - key:   readability-identifier-naming.ParameterCase
-    value: camelCase

@@ -12,7 +12,7 @@ static std::vector<std::complex<float>> dft(std::span<const float> x) {
     std::vector<std::complex<float>> X(n);
     for (std::size_t k = 0; k < n; ++k) {
         for (std::size_t j = 0; j < n; ++j) {
-            float angle = -2.f * static_cast<float>(std::numbers::pi) * k * j / n;
+            float angle = -2.f * static_cast<float>(std::numbers::pi) * static_cast<float>(k) * static_cast<float>(j) / static_cast<float>(n);
             X[k] += x[j] * std::complex<float>{std::cos(angle), std::sin(angle)};
         }
     }
@@ -24,7 +24,7 @@ static void idft(std::vector<std::complex<float>>& X, std::span<float> out) {
     for (std::size_t j = 0; j < n; ++j) {
         std::complex<float> sum{};
         for (std::size_t k = 0; k < n; ++k) {
-            float angle = 2.f * static_cast<float>(std::numbers::pi) * k * j / n;
+            float angle = 2.f * static_cast<float>(std::numbers::pi) * static_cast<float>(k) * static_cast<float>(j) / static_cast<float>(n);
             sum += X[k] * std::complex<float>{std::cos(angle), std::sin(angle)};
         }
         out[j] = sum.real() / static_cast<float>(n);
