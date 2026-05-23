@@ -71,6 +71,45 @@ else()
   target_compile_options(optical_core PRIVATE -Wall -Wextra)
 endif()
 
+# CT Reconstruction core — C++20 static library (no Qt dependency)
+add_library(ct_core STATIC
+  ct_core/src/FilterBank.cpp
+  ct_core/src/Reconstructor.cpp
+)
+target_include_directories(ct_core PUBLIC ct_core/include)
+target_compile_features(ct_core PUBLIC cxx_std_20)
+if(MSVC)
+  target_compile_options(ct_core PRIVATE /W3)
+  target_link_libraries(ct_core PRIVATE)
+else()
+  target_compile_options(ct_core PRIVATE -Wall -Wextra)
+  find_package(TBB QUIET)
+  if(TBB_FOUND)
+    target_link_libraries(ct_core PRIVATE TBB::tbb)
+  endif()
+endif()
+
+# CT QML viewer (optional — requires Qt 6 with Quick + Concurrent)
+option(BUILD_CT_VIEWER "Build CT QML viewer" OFF)
+if(BUILD_CT_VIEWER)
+  find_package(Qt6 REQUIRED COMPONENTS Quick Concurrent)
+  qt_add_executable(ct_viewer
+    ct_viewer/main.cpp
+    ct_viewer/CtImageProvider.cpp
+    ct_viewer/ReconstructionController.cpp
+  )
+  qt_add_qml_module(ct_viewer
+    URI CtViewer
+    VERSION 1.0
+    QML_FILES ct_viewer/qml/main.qml ct_viewer/qml/FilterControls.qml
+  )
+  target_link_libraries(ct_viewer PRIVATE ct_core Qt6::Quick Qt6::Concurrent)
+  set_target_properties(ct_viewer PROPERTIES
+    AUTOMOC ON
+    WIN32_EXECUTABLE TRUE MACOSX_BUNDLE TRUE
+  )
+endif()
+
 # Tests
 enable_testing()
 include(GoogleTest)
@@ -90,3 +129,8 @@ add_executable(test_optical
 )
 target_link_libraries(test_optical PRIVATE optical_core GTest::gtest_main)
 gtest_discover_tests(test_optical)
+
+add_executable(test_ct tests/test_ct.cpp)
+target_link_libraries(test_ct PRIVATE ct_core GTest::gtest_main)
+target_compile_features(test_ct PRIVATE cxx_std_20)
+gtest_discover_tests(test_ct)

@@ -16,8 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # SQLite is bundled via amalgamation in third_party/ — no system install needed.
-
       - name: Configure CMake
         run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
 
@@ -26,6 +24,49 @@ jobs:
 
       - name: Run GoogleTests
         run: ctest --test-dir build --build-config Release --output-on-failure -V
+
+  ct-backend-test:
+    name: CT backend — 6 GoogleTests (ubuntu, no Qt)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TBB (for par_unseq on Linux)
+        run: sudo apt-get update -qq && sudo apt-get install -y libtbb-dev
+
+      - name: Configure
+        run: >
+          cmake -B build -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+          -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+      - name: Build ct_core + test_ct
+        run: cmake --build build --target test_ct -j 4
+
+      - name: Run CT tests
+        run: ctest --test-dir build --output-on-failure -R "FilterBank|Reconstructor"
+
+  clang-tidy:
+    name: clang-tidy — cppcoreguidelines + modernize (ct_core)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install clang-tidy
+        run: sudo apt-get update -qq && sudo apt-get install -y clang-tidy
+
+      - name: Configure (generate compile_commands.json)
+        run: >
+          cmake -B build -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+
+      - name: Run clang-tidy on ct_core
+        run: |
+          find ct_core/src ct_core/include -name '*.cpp' -o -name '*.h' | \
+          xargs clang-tidy -p build --config-file=.clang-tidy 2>&1 | tee clang-tidy.log
+          # Fail if any warnings emitted
+          if grep -q "warning:" clang-tidy.log; then exit 1; fi
 
   python-tests:
     runs-on: ubuntu-latest
