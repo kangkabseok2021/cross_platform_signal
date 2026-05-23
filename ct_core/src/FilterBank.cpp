@@ -37,7 +37,7 @@ std::vector<float> FilterBank::buildKernel(FilterType type, std::size_t n) {
     for (std::size_t k = 0; k <= n / 2; ++k) {
         float h = static_cast<float>(k) / fn;   // Ram-Lak ramp
         if (type == FilterType::SheppLogan && k > 0) {
-            float x = static_cast<float>(std::numbers::pi) * k / fn;
+            float x = static_cast<float>(std::numbers::pi) * static_cast<float>(k) / fn;
             h *= std::sin(x) / x;               // sinc window
         }
         H[k] = h;
