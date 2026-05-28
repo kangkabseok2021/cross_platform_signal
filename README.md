@@ -1,12 +1,13 @@
-# Cross-Platform Signal Analyzer, Optical Positioning Simulator & CT Reconstruction Engine
+# Cross-Platform Signal Analyzer, Optical Positioning Simulator, CT Reconstruction Engine & Electrostatic Monitor
 
-Three C++ systems in one repository — sharing CMake infrastructure, GoogleTest, and a Linux + Windows CI matrix.
+Four C++ systems in one repository — sharing CMake infrastructure, GoogleTest, and a Linux + Windows CI matrix.
 
 | Project | Description | Docs |
 |---|---|---|
 | **Cross-Platform Signal Analyzer** | FFT + IIR signal processing suite with abstract OOP interfaces, Qt 6 dashboard, and Python cross-validation; compiles on Linux and Windows | [docs/signal-analyzer.md](docs/signal-analyzer.md) |
 | **High-Precision Optical Positioning Simulator** | Aspheric lens toolpath engine (cubic spline via Thomas algorithm), four-device HAL layer, six-state manufacturing FSM, and a lock-free SPSC telemetry logger | [docs/optical-positioning.md](docs/optical-positioning.md) |
 | **CT Slice Reconstruction Engine & QML Viewer** | C++20 Filtered Back Projection engine with Ram-Lak / Shepp-Logan filters, `std::execution::par_unseq` parallelism, Qt 6/QML dark-theme viewer via `QQuickImageProvider`, and clang-tidy IEC 62304-style CI | [docs/ct-reconstruction.md](docs/ct-reconstruction.md) |
+| **Electrostatic Charge Monitoring & QML Dashboard** | C++17 ADC and exponential decay simulator with a Qt6/QML Canvas gauge and QtCharts dashboard, featuring an asynchronous JSON Telemetry POST client. | [docs/electrostatic-monitor.md](docs/electrostatic-monitor.md) |
 
 ---
 
