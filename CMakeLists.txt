@@ -110,26 +110,26 @@ if(BUILD_CT_VIEWER)
   )
 endif()
 
-# Electrostatic Monitor
-add_library(monitor_lib STATIC
-  electrostatic_monitor/src/AdcSimulator.cpp
-  electrostatic_monitor/src/ElectrostaticEngine.cpp
-  electrostatic_monitor/src/TelemetryClient.cpp
-  electrostatic_monitor/src/MonitorContext.cpp
-)
-target_include_directories(monitor_lib PUBLIC electrostatic_monitor/src)
-find_package(Qt6 REQUIRED COMPONENTS Core Network)
-target_link_libraries(monitor_lib PUBLIC Qt6::Core Qt6::Network)
-set_target_properties(monitor_lib PROPERTIES AUTOMOC ON)
-if(MSVC)
-  target_compile_options(monitor_lib PRIVATE /W3)
-else()
-  target_compile_options(monitor_lib PRIVATE -Wall -Wextra)
-endif()
-
-option(BUILD_ELECTROSTATIC "Build Electrostatic Monitor QML dashboard" ON)
+option(BUILD_ELECTROSTATIC "Build Electrostatic Monitor QML dashboard" OFF)
 if(BUILD_ELECTROSTATIC)
-  find_package(Qt6 REQUIRED COMPONENTS Quick Charts)
+  find_package(Qt6 REQUIRED COMPONENTS Core Network Quick Charts)
+
+  # Electrostatic Monitor
+  add_library(monitor_lib STATIC
+    electrostatic_monitor/src/AdcSimulator.cpp
+    electrostatic_monitor/src/ElectrostaticEngine.cpp
+    electrostatic_monitor/src/TelemetryClient.cpp
+    electrostatic_monitor/src/MonitorContext.cpp
+  )
+  target_include_directories(monitor_lib PUBLIC electrostatic_monitor/src)
+  target_link_libraries(monitor_lib PUBLIC Qt6::Core Qt6::Network)
+  set_target_properties(monitor_lib PROPERTIES AUTOMOC ON)
+  if(MSVC)
+    target_compile_options(monitor_lib PRIVATE /W3)
+  else()
+    target_compile_options(monitor_lib PRIVATE -Wall -Wextra)
+  endif()
+
   qt_add_executable(electrostatic_app
     electrostatic_monitor/src/main.cpp
   )
@@ -144,7 +144,6 @@ if(BUILD_ELECTROSTATIC)
   )
   target_link_libraries(electrostatic_app PRIVATE monitor_lib Qt6::Quick Qt6::Charts)
   set_target_properties(electrostatic_app PROPERTIES
-    AUTOMOC ON
     WIN32_EXECUTABLE TRUE MACOSX_BUNDLE TRUE
   )
 endif()
@@ -173,6 +172,8 @@ target_link_libraries(test_ct PRIVATE ct_core GTest::gtest_main)
 target_compile_features(test_ct PRIVATE cxx_std_20)
 gtest_discover_tests(test_ct)
 
-add_executable(test_electrostatic tests/test_electrostatic.cpp)
-target_link_libraries(test_electrostatic PRIVATE GTest::gtest_main GTest::gtest monitor_lib)
-gtest_discover_tests(test_electrostatic)
+if(BUILD_ELECTROSTATIC)
+  add_executable(test_electrostatic tests/test_electrostatic.cpp)
+  target_link_libraries(test_electrostatic PRIVATE GTest::gtest_main GTest::gtest monitor_lib)
+  gtest_discover_tests(test_electrostatic)
+endif()

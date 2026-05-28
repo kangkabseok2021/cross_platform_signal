@@ -76,4 +76,6 @@ jobs:
       - name: Install Python deps
         run: uv sync --frozen
       - name: Run pytest
-        run: uv run pytest tools/test_tools.py -v
+        run: |
+          uv run pytest tools/test_tools.py -v
+          uv run pytest tests/test_telemetry.py -v
