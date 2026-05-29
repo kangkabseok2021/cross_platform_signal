@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dicom-pipeline-config
+  labels:
+    app: dicom-pipeline
+data:
+  METRICS_PORT: "8080"
+  LOG_FILE: "/app/logs/processing.ndjson"
+  INPUT_DIR: "/app/input"
+  OUTPUT_DIR: "/app/output"

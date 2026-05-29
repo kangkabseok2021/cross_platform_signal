@@ -177,3 +177,9 @@ if(BUILD_ELECTROSTATIC)
   target_link_libraries(test_electrostatic PRIVATE GTest::gtest_main GTest::gtest monitor_lib)
   gtest_discover_tests(test_electrostatic)
 endif()
+
+option(BUILD_DICOM "Build DICOM Anonymization & Observability Pipeline" OFF)
+if(BUILD_DICOM)
+  add_subdirectory(dicom_pipeline)
+endif()
+

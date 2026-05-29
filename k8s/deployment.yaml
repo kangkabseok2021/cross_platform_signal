@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dicom-pipeline
+  labels:
+    app: dicom-pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dicom-pipeline
+  template:
+    metadata:
+      labels:
+        app: dicom-pipeline
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
+      containers:
+        - name: anonymizer-pipeline
+          image: dicom-anonymizer:latest
+          imagePullPolicy: IfNotPresent
+          args:
+            - "--input-dir"
+            - "$(INPUT_DIR)"
+            - "--output-dir"
+            - "$(OUTPUT_DIR)"
+            - "--metrics-port"
+            - "$(METRICS_PORT)"
+            - "--log-file"
+            - "$(LOG_FILE)"
+          envFrom:
+            - configMapRef:
+                name: dicom-pipeline-config
+          ports:
+            - containerPort: 8080
+              name: metrics
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false  # Daemon needs to write to mounted volumes
+            capabilities:
+              drop:
+                - ALL
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: metrics
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: metrics
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          volumeMounts:
+            - name: input-data
+              mountPath: /app/input
+            - name: output-data
+              mountPath: /app/output
+            - name: log-data
+              mountPath: /app/logs
+      volumes:
+        - name: input-data
+          emptyDir: {}
+        - name: output-data
+          emptyDir: {}
+        - name: log-data
+          emptyDir: {}
