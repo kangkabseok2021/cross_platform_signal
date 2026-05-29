@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: edge_sorting_pipeline/Dockerfile
+    container_name: optical_sorting_api
+    ports:
+      - "8002:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  edge-core:
+    build:
+      context: ..
+      dockerfile: edge_sorting_pipeline/Dockerfile
+    container_name: optical_sorting_core
+    command: ["./edge_sorting_app", "api", "8000"]
+    depends_on:
+      - api
+    environment:
+      - PYTHONUNBUFFERED=1

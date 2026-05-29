@@ -183,3 +183,8 @@ if(BUILD_DICOM)
   add_subdirectory(dicom_pipeline)
 endif()
 
+option(BUILD_SORTING "Build High-Speed Edge Inference Pipeline for Optical Sorting" OFF)
+if(BUILD_SORTING)
+  add_subdirectory(edge_sorting_pipeline)
+endif()
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optical Sorting Edge Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Optical Sorting Edge Dashboard</h1>
+            <div class="status-badge" id="status-badge">Connecting...</div>
+        </header>
+
+        <main class="metrics-grid">
+            <div class="card">
+                <div class="card-label">Total Sorted Objects</div>
+                <div class="card-value" id="sorted-count">0</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Average Confidence</div>
+                <div class="card-value" id="avg-confidence">0.000</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Last Detected Material</div>
+                <div class="card-value" id="last-material">None</div>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
