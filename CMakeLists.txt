@@ -188,3 +188,8 @@ if(BUILD_SORTING)
   add_subdirectory(edge_sorting_pipeline)
 endif()
 
+option(BUILD_AUDIO "Build Real-Time Audio Processing Engine" OFF)
+if(BUILD_AUDIO)
+  add_subdirectory(realtime_audio_engine)
+endif()
+
