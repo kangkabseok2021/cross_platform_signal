@@ -10,7 +10,7 @@ Seven C++ systems in one repository — sharing CMake infrastructure, GoogleTest
 | **Electrostatic Charge Monitoring & QML Dashboard** | C++17 ADC and exponential decay simulator with a Qt6/QML Canvas gauge and QtCharts dashboard, featuring an asynchronous JSON Telemetry POST client | [docs/electrostatic-monitor.md](docs/electrostatic-monitor.md) |
 | **AI-Generated DICOM Anonymization & Observability Pipeline** | C++20 daemon featuring deterministic SHA-256 PII scrubbing, formatted NDJSON log streams, and an asynchronous HTTP server exposing Prometheus metrics | [docs/dicom-pipeline.md](docs/dicom-pipeline.md) |
 | **High-Speed Edge Inference Pipeline for Optical Sorting** | Real-time C++20 edge processing service simulating camera capture, object detection, NMS bounding box filtering, lock-free SPSC queue, and raw POSIX socket HTTP/1.1 telemetry to a FastAPI & TS dashboard | [docs/optical-sorting.md](docs/optical-sorting.md) |
-| **Real-Time Audio Processing Engine** | C++20 lock-free SPSC ring buffer feeding a `std::jthread` IIR DSP consumer at 44.1 kHz; Qt6/QML rotary-knob UI with live Canvas waveform; SQLite preset persistence via QtSql; 13 GoogleTests + 7 QTests | [realtime_audio_engine/docs/](realtime_audio_engine/docs/) |
+| **Real-Time Audio Processing Engine** | C++20 lock-free SPSC ring buffer feeding a `std::jthread` IIR DSP consumer at 44.1 kHz; Qt6/QML rotary-knob UI with live Canvas waveform; SQLite preset persistence via QtSql; 13 GoogleTests + 7 QTests | [docs/realtime-audio-engine.md](docs/realtime-audio-engine.md) |
 
 ---
 
