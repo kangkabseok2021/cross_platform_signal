@@ -96,6 +96,25 @@ jobs:
           QT_QPA_PLATFORM: offscreen
         run: ctest --test-dir build --output-on-failure -R "test_audio_qt"
 
+  telemetry-ema-test:
+    name: Vehicle Telemetry — 6 EMA GoogleTests (ubuntu, no Qt)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure (EMA core only, no Qt, no httplib)
+        run: >
+          cmake -B build -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+          -DBUILD_TELEMETRY=ON
+          -DBUILD_VT_HTTP=OFF
+
+      - name: Build test_ema
+        run: cmake --build build --target test_ema -j 4
+
+      - name: Run EMA tests
+        run: ctest --test-dir build --output-on-failure -R "EmaFilter"
+
   python-tests:
     runs-on: ubuntu-latest
     steps:

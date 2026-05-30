@@ -193,3 +193,8 @@ if(BUILD_AUDIO)
   add_subdirectory(realtime_audio_engine)
 endif()
 
+option(BUILD_TELEMETRY "Build Embedded Vehicle Telemetry Qt Dashboard" OFF)
+if(BUILD_TELEMETRY)
+  add_subdirectory(vehicle_telemetry_qt)
+endif()
+

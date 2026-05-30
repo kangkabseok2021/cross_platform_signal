@@ -1,6 +1,6 @@
-# Cross-Platform Signal Analyzer, Optical Positioning Simulator, CT Reconstruction Engine, Electrostatic Monitor, DICOM Pipeline, Optical Sorting Pipeline & Real-Time Audio Engine
+# Cross-Platform Signal Analyzer, Optical Positioning Simulator, CT Reconstruction Engine, Electrostatic Monitor, DICOM Pipeline, Optical Sorting Pipeline, Real-Time Audio Engine & Vehicle Telemetry Qt Dashboard
 
-Seven C++ systems in one repository — sharing CMake infrastructure, GoogleTest, and a Linux + Windows CI matrix.
+Eight C++ systems in one repository — sharing CMake infrastructure, GoogleTest, and a Linux + Windows CI matrix.
 
 | Project | Description | Docs |
 |---|---|---|
@@ -11,6 +11,7 @@ Seven C++ systems in one repository — sharing CMake infrastructure, GoogleTest
 | **AI-Generated DICOM Anonymization & Observability Pipeline** | C++20 daemon featuring deterministic SHA-256 PII scrubbing, formatted NDJSON log streams, and an asynchronous HTTP server exposing Prometheus metrics | [docs/dicom-pipeline.md](docs/dicom-pipeline.md) |
 | **High-Speed Edge Inference Pipeline for Optical Sorting** | Real-time C++20 edge processing service simulating camera capture, object detection, NMS bounding box filtering, lock-free SPSC queue, and raw POSIX socket HTTP/1.1 telemetry to a FastAPI & TS dashboard | [docs/optical-sorting.md](docs/optical-sorting.md) |
 | **Real-Time Audio Processing Engine** | C++20 lock-free SPSC ring buffer feeding a `std::jthread` IIR DSP consumer at 44.1 kHz; Qt6/QML rotary-knob UI with live Canvas waveform; SQLite preset persistence via QtSql; 13 GoogleTests + 7 QTests | [docs/realtime-audio-engine.md](docs/realtime-audio-engine.md) |
+| **Embedded Vehicle Telemetry & Qt/QML Dashboard** | C++20 EMA filter bank (S_t = α·X_t + (1−α)·S_{t−1}) smoothing 4 ADC/CAN channels at 10 Hz; Qt6/QML dark-mode HMI with Canvas gauges and ChartView; httplib embedded REST server for technician browser access; 6 GoogleTests + 5 pytest REST tests | [vehicle_telemetry_qt/README.md](vehicle_telemetry_qt/README.md) |
 
 ---
 
@@ -62,6 +63,27 @@ cross_platform_signal/
 │       ├── THREADING.md             Lock-free rationale + false-sharing analysis
 │       ├── FILTER-MATH.md           IIR derivation, stability proof, IIR vs FIR table
 │       └── DB-SCHEMA.md             SQLite schema DDL + ADR-DB-001
+├── vehicle_telemetry_qt/            Embedded Vehicle Telemetry & Qt/QML Dashboard
+│   ├── include/
+│   │   ├── EmaFilter.h              Header-only EmaFilter + EmaFilterBank<N> (S_t = α·X_t + (1−α)·S_{t−1})
+│   │   ├── SensorSimulator.h        VehicleSensorSimulator — 4 channels, mt19937 noise
+│   │   ├── TelemetryHttpServer.h    httplib pimpl REST server (GetSnapshot/SetAlpha callbacks)
+│   │   └── TelemetryModel.h         Qt QObject — Q_PROPERTY/Q_INVOKABLE/NOTIFY bridge
+│   ├── src/
+│   │   ├── SensorSimulator.cpp      engine_temp · battery_v · oil_pressure · rpm
+│   │   ├── TelemetryHttpServer.cpp  httplib + nlohmann/json routes + embedded index.html
+│   │   ├── TelemetryModel.cpp       QTimer 10 Hz → sim → EmaFilterBank → emit dataChanged
+│   │   ├── main_noqt.cpp            Headless server (--no-qt, std::thread loop, for pytest)
+│   │   └── main.cpp                 Qt app entry (context property + QML engine)
+│   ├── qml/
+│   │   ├── main.qml                 ApplicationWindow 1024×600, fault badge, alpha sliders
+│   │   ├── GaugeCard.qml            Canvas 270° arc gauge, fault color animation
+│   │   └── TelemetryChart.qml       ChartView raw/filtered LineSeries, 60 s rolling window
+│   ├── tests/test_ema.cpp           6 GoogleTests (passthrough, smoothing, step-response, reset, steady-state, spike)
+│   ├── tests_python/test_http_server.py  5 pytest REST tests (health, 4 channels, EMA diff, alpha, CORS)
+│   ├── CMakeLists.txt               vt_ema_core + vt_sensor_core + test_ema + optional HTTP + Qt
+│   ├── Jenkinsfile                  4-stage: deps → EMA tests → headless HTTP → pytest → Qt GUI
+│   └── README.md
 ├── dicom_pipeline/                  AI DICOM Anonymization & Observability Pipeline
 │   ├── include/                     Header definitions (Types, Reader, Anonymizer, etc.)
 │   ├── src/                         Daemon C++20 source code
