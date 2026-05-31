@@ -115,6 +115,24 @@ jobs:
       - name: Run EMA tests
         run: ctest --test-dir build --output-on-failure -R "EmaFilter"
 
+  acoustic-engine-test:
+    name: Acoustic Engine — 15 GoogleTests (C99 legacy + C++20 refactor)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure (acoustic subproject only)
+        run: >
+          cmake -B build -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+          -DBUILD_ACOUSTIC=ON
+
+      - name: Build test_acoustic_core + demo targets
+        run: cmake --build build --target test_acoustic_core demo_safe demo_leak -j$(nproc)
+
+      - name: Run 15 GoogleTests
+        run: ctest --test-dir build/acoustic_propagation_engine --output-on-failure -V
+
   python-tests:
     runs-on: ubuntu-latest
     steps:

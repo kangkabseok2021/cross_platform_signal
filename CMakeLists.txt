@@ -198,3 +198,8 @@ if(BUILD_TELEMETRY)
   add_subdirectory(vehicle_telemetry_qt)
 endif()
 
+option(BUILD_ACOUSTIC "Build Acoustic Propagation Engine" OFF)
+if(BUILD_ACOUSTIC)
+  add_subdirectory(acoustic_propagation_engine)
+endif()
+
