@@ -26,7 +26,7 @@ public:
     [[nodiscard]] float computeSPL(float Lw, float /*r*/) const override {
         const float a_bar = std::min(A_ / std::max(S_, 1e-6f), 0.9999f);
         const float R     = A_ / (1.0f - a_bar);
-        return Lw + 10.0f * std::log10f(4.0f / std::max(R, 1e-6f));
+        return Lw + 10.0f * std::log10(4.0f / std::max(R, 1e-6f));
     }
 
     [[nodiscard]] std::string_view name() const noexcept override {

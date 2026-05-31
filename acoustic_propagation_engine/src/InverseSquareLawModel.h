@@ -15,7 +15,7 @@ public:
     [[nodiscard]] float computeSPL(float Lw, float r) const override {
         const float r_safe = std::max(r, kMinDistance);
         return Lw
-               - 20.0f * std::log10f(r_safe)
+               - 20.0f * std::log10(r_safe)
                - kHardPlaneCorrection
                - kAirAbsorption_1kHz * r_safe;
     }
