@@ -5,35 +5,35 @@ using Xunit;
 
 namespace BallisticDashboard.Tests;
 
-// P/Invoke declarations mirrored here so the test project has no WPF dependency.
-[StructLayout(LayoutKind.Sequential)]
-file struct TrajectoryPointNative
-{
-    public double TimeS, XMeters, YMeters, SpeedMs;
-}
-
-file static class Native
-{
-    static Native()
-    {
-        var path = Environment.GetEnvironmentVariable("BALLISTIC_DLL_PATH");
-        if (!string.IsNullOrEmpty(path))
-            NativeLibrary.Load(path);
-    }
-
-    [DllImport("ballistic_engine", CallingConvention = CallingConvention.Cdecl)]
-    public static extern int compute_trajectory(
-        double elevation_deg, double muzzle_velocity_ms, int munition_id,
-        [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 4)]
-        TrajectoryPointNative[] out_points, int max_points, out int out_count);
-
-    [DllImport("ballistic_engine", CallingConvention = CallingConvention.Cdecl)]
-    public static extern IntPtr get_last_error();
-}
-
 [Trait("Category", "Interop")]
 public sealed class BallisticsInteropTests
 {
+    // Nested so TrajectoryPointNative is not file-local — fixes CS9051.
+    [StructLayout(LayoutKind.Sequential)]
+    private struct TrajectoryPointNative
+    {
+        public double TimeS, XMeters, YMeters, SpeedMs;
+    }
+
+    private static class Native
+    {
+        static Native()
+        {
+            var path = Environment.GetEnvironmentVariable("BALLISTIC_DLL_PATH");
+            if (!string.IsNullOrEmpty(path))
+                NativeLibrary.Load(path);
+        }
+
+        [DllImport("ballistic_engine", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int compute_trajectory(
+            double elevation_deg, double muzzle_velocity_ms, int munition_id,
+            [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 4)]
+            TrajectoryPointNative[] out_points, int max_points, out int out_count);
+
+        [DllImport("ballistic_engine", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr get_last_error();
+    }
+
     private static readonly bool DllAvailable =
         !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("BALLISTIC_DLL_PATH"));
 
@@ -41,8 +41,7 @@ public sealed class BallisticsInteropTests
         double elev, double vel, int munId)
     {
         var buf = new TrajectoryPointNative[50_000];
-        int n;
-        int rc = Native.compute_trajectory(elev, vel, munId, buf, buf.Length, out n);
+        int rc = Native.compute_trajectory(elev, vel, munId, buf, buf.Length, out int n);
         return (buf, rc < 0 ? -1 : n);
     }
 
@@ -52,7 +51,7 @@ public sealed class BallisticsInteropTests
         Skip.IfNot(DllAvailable, "Native DLL not available");
         var (pts, count) = Compute(45.0, 400.0, 0);
         Assert.True(count > 0);
-        Assert.InRange(pts[count - 1].YMeters, -0.5, 0.5); // lands at ground
+        Assert.InRange(pts[count - 1].YMeters, -0.5, 0.5);
     }
 
     [SkippableFact]
