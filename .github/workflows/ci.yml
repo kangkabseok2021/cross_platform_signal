@@ -133,6 +133,61 @@ jobs:
       - name: Run 15 GoogleTests
         run: ctest --test-dir build/acoustic_propagation_engine --output-on-failure -V
 
+  ballistic-cpp-test:
+    name: Ballistic engine — 8 GoogleTests (ubuntu, GCC-12)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install GCC-12
+        run: sudo apt-get update -qq && sudo apt-get install -y gcc-12 g++-12
+
+      - name: Configure (standalone subproject)
+        run: >
+          cmake -S ballistic_trajectory_engine -B build-ballistic
+          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_CXX_COMPILER=g++-12
+
+      - name: Build
+        run: cmake --build build-ballistic --parallel
+
+      - name: Run 8 GoogleTests
+        run: ctest --test-dir build-ballistic --output-on-failure -V
+
+  ballistic-csharp-build:
+    name: Ballistic dashboard — dotnet build + unit tests (Windows, no DLL)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: dotnet build
+        working-directory: ballistic_trajectory_engine
+        run: dotnet build BallisticDashboard.sln --configuration Release
+
+      - name: dotnet test (skips interop — DLL not available)
+        working-directory: ballistic_trajectory_engine
+        run: dotnet test BallisticDashboard.sln --configuration Release --filter "Category!=Interop" --verbosity normal
+
+  ballistic-interop-test:
+    name: Ballistic interop — C++ DLL + 5 xUnit tests (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure C++ (MSVC)
+        run: >
+          cmake -S ballistic_trajectory_engine -B build-ballistic-msvc
+          -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build native DLL
+        run: cmake --build build-ballistic-msvc --config Release --target ballistic_engine
+
+      - name: dotnet test (all tests including interop)
+        working-directory: ballistic_trajectory_engine
+        env:
+          BALLISTIC_DLL_PATH: ${{ github.workspace }}\build-ballistic-msvc\Release\ballistic_engine.dll
+        run: dotnet test BallisticDashboard.sln --configuration Release --verbosity normal
+
   python-tests:
     runs-on: ubuntu-latest
     steps:

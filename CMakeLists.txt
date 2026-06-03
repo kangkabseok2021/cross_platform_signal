@@ -203,3 +203,8 @@ if(BUILD_ACOUSTIC)
   add_subdirectory(acoustic_propagation_engine)
 endif()
 
+option(BUILD_BALLISTIC "Build Ballistic Trajectory Engine C++17 tests" OFF)
+if(BUILD_BALLISTIC)
+  add_subdirectory(ballistic_trajectory_engine)
+endif()
+
