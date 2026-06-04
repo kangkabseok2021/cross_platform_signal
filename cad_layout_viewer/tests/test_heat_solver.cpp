@@ -11,13 +11,14 @@ class TestHeatSolver : public QObject {
 private slots:
 
     void testSteadyStateFlatPlatform() {
-        // Uniform κ, no source, Dirichlet BC left=100 right=0
-        // After enough steps → linear T profile
-        const int nx = 20, ny = 10;
+        // Uniform κ=1, no source, Dirichlet BC left=100 right=0.
+        // Small 5×3 grid + large dt=0.1 → diffusion time τ ~ (nx-1)² = 16
+        // Run 3000 steps → t = 300 >> 16 → well-converged linear profile.
+        const int nx = 5, ny = 3;
         HeatSolver solver;
         HeatSolver::Params p;
         p.nx = nx; p.ny = ny;
-        p.dt = 1e-4; p.n_steps = 5000;
+        p.dt = 0.1; p.n_steps = 3000;   // CFL limit = dx²/(4κ) = 0.25 > 0.1 ✓
         p.bc_left = 100.0; p.bc_right = 0.0;
 
         std::vector<double> kappa(static_cast<size_t>(nx * ny), 1.0);
@@ -25,7 +26,6 @@ private slots:
         solver.solve(kappa, q, p);
 
         const auto& T = solver.temperature();
-        // Check interior column at j=ny/2 is approximately linear
         for (int i = 1; i < nx - 1; ++i) {
             double expected = 100.0 - 100.0 * i / (nx - 1);
             double actual   = T[static_cast<size_t>((ny/2) * nx + i)];
