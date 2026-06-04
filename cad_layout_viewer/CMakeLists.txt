@@ -55,6 +55,10 @@ add_library(cad_core STATIC
     src/hotspot_analyser.cpp
     src/tutorial_wizard.cpp
     src/main_window.cpp
+    # Headers with Q_OBJECT must be listed so AUTOMOC generates .moc files
+    include/layout_canvas.h
+    include/main_window.h
+    include/tutorial_wizard.h
 )
 target_include_directories(cad_core PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

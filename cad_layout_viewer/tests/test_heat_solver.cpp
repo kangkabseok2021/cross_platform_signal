@@ -1,5 +1,6 @@
 #include "heat_solver.h"
 #include "heatmap_renderer.h"
+#include "hotspot_analyser.h"
 #include <QtTest/QtTest>
 #include <QImage>
 #include <cmath>
