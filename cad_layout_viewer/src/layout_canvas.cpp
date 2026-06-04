@@ -1,5 +1,6 @@
 #include "layout_canvas.h"
 #include <QPainter>
+#include <QPaintEvent>
 #include <QWheelEvent>
 #include <QMouseEvent>
 #include <cmath>
@@ -11,10 +12,6 @@ const QList<QColor> LayoutCanvas::kLayerColors = {
 };
 
 LayoutCanvas::LayoutCanvas(QWidget* parent) : QOpenGLWidget(parent) {}
-
-void LayoutCanvas::initializeGL() {}
-
-void LayoutCanvas::resizeGL(int /*w*/, int /*h*/) {}
 
 void LayoutCanvas::setLayout(const LayoutEngine* engine) {
     engine_ = engine;
@@ -51,7 +48,7 @@ void LayoutCanvas::fitAll() {
     update();
 }
 
-void LayoutCanvas::paintGL() {
+void LayoutCanvas::paintEvent(QPaintEvent* /*e*/) {
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing, false);
     p.fillRect(rect(), Qt::black);

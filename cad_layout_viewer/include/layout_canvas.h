@@ -2,13 +2,12 @@
 #include "layout_engine.h"
 #include "heatmap_renderer.h"
 #include <QImage>
-#include <QMatrix4x4>
-#include <QOpenGLWidget>
+#include <QWidget>
 #include <QPointF>
-#include <QSet>
 #include <unordered_set>
 
-class LayoutCanvas : public QOpenGLWidget {
+// Uses QWidget + QPainter (Qt6 raster/OpenGL backend).
+class LayoutCanvas : public QWidget {
     Q_OBJECT
 public:
     explicit LayoutCanvas(QWidget* parent = nullptr);
@@ -23,9 +22,7 @@ signals:
     void polygonSelected(uint32_t layer_id, qsizetype polygon_idx);
 
 protected:
-    void paintGL()        override;
-    void resizeGL(int w, int h) override;
-    void initializeGL()   override;
+    void paintEvent(QPaintEvent* e) override;
     void wheelEvent(QWheelEvent* e) override;
     void mousePressEvent(QMouseEvent* e) override;
     void mouseMoveEvent(QMouseEvent* e) override;
