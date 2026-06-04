@@ -2,6 +2,7 @@
 #include "sobel_processor.h"
 #include <chrono>
 #include <cstdlib>
+#include <filesystem>
 #include <format>
 #include <iostream>
 #include <string>
@@ -74,6 +75,13 @@ static Args parse_args(int argc, char** argv)
 int main(int argc, char** argv)
 {
     Args a = parse_args(argc, argv);
+
+    // Fast-fail for non-existent input files — avoids GStreamer hanging during probe
+    if (!a.input.empty() && !a.synthetic &&
+        !std::filesystem::exists(a.input)) {
+        std::cerr << std::format("Error: input file not found: {}\n", a.input);
+        return 1;
+    }
 
     auto processor = make_sobel_processor(a.stub_gpu);
 
