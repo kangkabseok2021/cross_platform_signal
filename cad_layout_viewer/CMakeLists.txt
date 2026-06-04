@@ -42,7 +42,7 @@ if(NOT TARGET Eigen3::Eigen)
 endif()
 
 # ── Qt 6 ─────────────────────────────────────────────────────────────────────
-find_package(Qt6 REQUIRED COMPONENTS Widgets OpenGL Test)
+find_package(Qt6 REQUIRED COMPONENTS Widgets OpenGL OpenGLWidgets Test)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
@@ -62,7 +62,7 @@ target_include_directories(cad_core PUBLIC
 target_link_libraries(cad_core PUBLIC
     layout_parser_lib
     Eigen3::Eigen
-    Qt6::Widgets Qt6::OpenGL
+    Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets
 )
 if(WIN32)
     target_link_libraries(cad_core PUBLIC ws2_32 userenv ntdll)
