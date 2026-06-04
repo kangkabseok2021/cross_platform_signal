@@ -1,4 +1,5 @@
 #include "main_window.h"
+#include <QApplication>
 #include "heatmap_renderer.h"
 #include "hotspot_analyser.h"
 #include "tutorial_wizard.h"
@@ -130,7 +131,7 @@ void MainWindow::onLayerToggled() {
 
 void MainWindow::runSimulation() {
     if (engine_.isEmpty()) return;
-    QRectF bb = engine_->bbox();
+    QRectF bb = engine_.bbox();
     if (bb.isEmpty()) return;
 
     const int nx = sim_params_.nx, ny = sim_params_.ny;

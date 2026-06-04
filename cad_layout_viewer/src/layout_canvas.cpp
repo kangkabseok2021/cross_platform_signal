@@ -11,7 +11,7 @@ const QList<QColor> LayoutCanvas::kLayerColors = {
     {227, 119, 194}, {127, 127, 127}, {188, 189,  34}, { 23, 190, 207}
 };
 
-LayoutCanvas::LayoutCanvas(QWidget* parent) : QOpenGLWidget(parent) {}
+LayoutCanvas::LayoutCanvas(QWidget* parent) : QWidget(parent) {}
 
 void LayoutCanvas::setLayout(const LayoutEngine* engine) {
     engine_ = engine;
