@@ -213,3 +213,8 @@ if(BUILD_ENDOSCOPIC)
   add_subdirectory(endoscopic_video_pipeline)
 endif()
 
+
+option(BUILD_CAD "Build CAD Layout Viewer & Simulator" OFF)
+if(BUILD_CAD)
+  add_subdirectory(cad_layout_viewer)
+endif()

@@ -188,6 +188,37 @@ jobs:
           BALLISTIC_DLL_PATH: ${{ github.workspace }}\build-ballistic-msvc\Release\ballistic_engine.dll
         run: dotnet test BallisticDashboard.sln --configuration Release --verbosity normal
 
+  cad-viewer-build:
+    name: CAD Layout Viewer — Rust+C++ build + 10 tests (Qt6, ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Qt6 + OpenGL + libGL
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            qt6-base-dev libqt6opengl6-dev \
+            libgl1-mesa-dev libgles2-mesa-dev \
+            libegl1-mesa-dev
+
+      - name: Configure
+        run: >
+          cmake -S cad_layout_viewer -B build-cad
+          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+
+      - name: Build (Rust + C++)
+        run: cmake --build build-cad --parallel
+
+      - name: Run 10 tests (6 GoogleTest + 4 QTest offscreen)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: ctest --test-dir build-cad --output-on-failure -V
+
   endoscopic-build-cpu:
     name: Endoscopic pipeline — CPU build + 4 pytest smoke tests
     runs-on: ubuntu-latest
