@@ -208,3 +208,8 @@ if(BUILD_BALLISTIC)
   add_subdirectory(ballistic_trajectory_engine)
 endif()
 
+option(BUILD_ENDOSCOPIC "Build GPU-Accelerated Endoscopic Video Pipeline" OFF)
+if(BUILD_ENDOSCOPIC)
+  add_subdirectory(endoscopic_video_pipeline)
+endif()
+

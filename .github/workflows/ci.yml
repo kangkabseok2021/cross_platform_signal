@@ -188,6 +188,39 @@ jobs:
           BALLISTIC_DLL_PATH: ${{ github.workspace }}\build-ballistic-msvc\Release\ballistic_engine.dll
         run: dotnet test BallisticDashboard.sln --configuration Release --verbosity normal
 
+  endoscopic-build-cpu:
+    name: Endoscopic pipeline — CPU build + 4 pytest smoke tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install GStreamer + x264
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            libgstreamer1.0-dev gstreamer1.0-plugins-base \
+            gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly \
+            libgstreamer-app1.0-dev libgstreamer-video1.0-dev \
+            gstreamer1.0-libav
+
+      - name: Configure (ENABLE_CUDA=OFF)
+        run: >
+          cmake -S endoscopic_video_pipeline -B build-endo
+          -DCMAKE_BUILD_TYPE=Release
+          -DENABLE_CUDA=OFF
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+
+      - name: Build
+        run: cmake --build build-endo --parallel
+
+      - name: Install Python test deps
+        run: pip3 install pytest opencv-python-headless --quiet
+
+      - name: Run 4 pytest smoke tests
+        env:
+          ENDOSCOPIC_BIN: ${{ github.workspace }}/build-endo/endoscopic_pipeline
+        run: pytest endoscopic_video_pipeline/tests/ -v --tb=short
+
   python-tests:
     runs-on: ubuntu-latest
     steps:

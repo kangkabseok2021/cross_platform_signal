@@ -1,0 +1,21 @@
+services:
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile.cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "nvidia-smi"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - ./samples:/data:ro
+    command: ["--synthetic", "--width", "1280", "--height", "720", "--frames", "250",
+              "--output", "/data/output.mp4", "--json-status"]
