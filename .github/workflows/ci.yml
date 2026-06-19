@@ -253,6 +253,28 @@ jobs:
           ENDOSCOPIC_BIN: ${{ github.workspace }}/build-endo/endoscopic_pipeline
         run: pytest endoscopic_video_pipeline/tests/ -v --tb=short
 
+  automotive-anc-engine-test:
+    name: Automotive ANC Engine — 22 GoogleTests + 13 pytest (ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+
+      - name: Configure (standalone subproject)
+        run: >
+          cmake -S automotive_anc_engine -B build-anc
+          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+
+      - name: Build
+        run: cmake --build build-anc --parallel
+
+      - name: Run 22 GoogleTests
+        run: ctest --test-dir build-anc --output-on-failure -V
+
+      - name: Run 13 pytest (Python design layer)
+        run: uv run --directory automotive_anc_engine/design pytest tests/ -v
+
   python-tests:
     runs-on: ubuntu-latest
     steps:
