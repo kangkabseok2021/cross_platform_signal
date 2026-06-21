@@ -132,3 +132,45 @@ TEST(SignalProcessing, NonMaxSuppressionRetainsOnlyHigherPeak) {
     EXPECT_EQ(candidates[0].grid_x, 5);
     EXPECT_EQ(candidates[0].grid_y, 5);
 }
+
+// ── Task 4: AnomalyExporter ────────────────────────────────────────────────
+
+TEST(Exporter, CsvContainsMandatoryColumns) {
+    std::vector<AnomalyCandidate> anomalies = {
+        {3, 7, 1.2f, 145.0f, 2},
+        {5, 2, 0.8f, 220.0f, 0}
+    };
+    const std::string path = "/tmp/sensys_test_export.csv";
+    ASSERT_TRUE(AnomalyExporter::exportCsv(anomalies, path));
+
+    std::ifstream f(path);
+    ASSERT_TRUE(f.is_open());
+    std::string header;
+    std::getline(f, header);
+    EXPECT_NE(header.find("grid_x"), std::string::npos);
+    EXPECT_NE(header.find("grid_y"), std::string::npos);
+    EXPECT_NE(header.find("depth_m"), std::string::npos);
+    EXPECT_NE(header.find("peak_nT"), std::string::npos);
+    EXPECT_NE(header.find("channel"), std::string::npos);
+
+    int data_lines = 0;
+    std::string line;
+    while (std::getline(f, line)) if (!line.empty()) ++data_lines;
+    EXPECT_EQ(data_lines, 2);
+}
+
+TEST(Exporter, GeoJsonHasFeaturesArray) {
+    std::vector<AnomalyCandidate> anomalies = {
+        {4, 8, 1.5f, 310.0f, 1}
+    };
+    const std::string path = "/tmp/sensys_test_export.geojson";
+    ASSERT_TRUE(AnomalyExporter::exportGeoJson(anomalies, 51.5, -0.1, 1.0, path));
+
+    std::ifstream f(path);
+    std::ostringstream ss;
+    ss << f.rdbuf();
+    std::string content = ss.str();
+    EXPECT_NE(content.find("FeatureCollection"), std::string::npos);
+    EXPECT_NE(content.find("features"), std::string::npos);
+    EXPECT_NE(content.find("coordinates"), std::string::npos);
+}
