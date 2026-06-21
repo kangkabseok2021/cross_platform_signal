@@ -66,4 +66,69 @@ TEST(Simulator, DeterministicReplay) {
     }
 }
 
-// ── Tasks 3-4 tests added below ────────────────────────────────────────────
+// ── Task 3: Signal Processing ──────────────────────────────────────────────
+
+TEST(SignalProcessing, GaussianSmootherSpreadsSingleSpike) {
+    const int W = 5, H = 5;
+    std::vector<float> grid(W * H, 0.0f);
+    grid[2 * W + 2] = 100.0f;  // spike at (row=2, col=2)
+
+    GaussianSmoother::apply(grid.data(), W, H);
+
+    float peak = grid[2 * W + 2];
+    EXPECT_LE(peak, 50.0f);
+
+    // All 8 neighbours of (2,2) must be > 0
+    const int nr[] = {1,1,1,2,2,3,3,3};
+    const int nc[] = {1,2,3,1,3,1,2,3};
+    for (int i = 0; i < 8; ++i)
+        EXPECT_GT(grid[nr[i]*W + nc[i]], 0.0f) << "neighbour " << i << " is zero";
+}
+
+TEST(SignalProcessing, BaselineSubtractorZerosRowMeans) {
+    const int W = 6, H = 4;
+    std::vector<float> grid(W * H);
+    for (int r = 0; r < H; ++r)
+        for (int c = 0; c < W; ++c)
+            grid[r * W + c] = static_cast<float>((r + 1) * 10);
+
+    BaselineSubtractor::subtract(grid.data(), W, H);
+
+    for (int r = 0; r < H; ++r) {
+        float mean = 0.0f;
+        for (int c = 0; c < W; ++c) mean += grid[r * W + c];
+        mean /= W;
+        EXPECT_NEAR(mean, 0.0f, 1e-5f) << "row " << r << " mean not zero";
+    }
+}
+
+TEST(SignalProcessing, RmsMatchesManualFormula) {
+    float grid[] = {3.0f, 4.0f, 0.0f, 0.0f};
+    float rms = RmsCalculator::compute(grid, 2, 2);
+    EXPECT_NEAR(rms, 2.5f, 1e-5f);
+}
+
+TEST(SignalProcessing, AnomalyDetectorFindsInjectedPeak) {
+    const int W = 10, H = 10;
+    std::vector<float> grid(W * H, 10.0f);
+    grid[5 * W + 5] = 200.0f;
+
+    auto candidates = AnomalyDetector::find(grid.data(), W, H, 100.0f);
+
+    ASSERT_EQ(candidates.size(), 1u);
+    EXPECT_EQ(candidates[0].grid_x, 5);
+    EXPECT_EQ(candidates[0].grid_y, 5);
+}
+
+TEST(SignalProcessing, NonMaxSuppressionRetainsOnlyHigherPeak) {
+    const int W = 10, H = 10;
+    std::vector<float> grid(W * H, 0.0f);
+    grid[4 * W + 4] = 150.0f;
+    grid[5 * W + 5] = 200.0f;  // diagonal neighbour, strictly greater
+
+    auto candidates = AnomalyDetector::find(grid.data(), W, H, 100.0f);
+
+    ASSERT_EQ(candidates.size(), 1u);
+    EXPECT_EQ(candidates[0].grid_x, 5);
+    EXPECT_EQ(candidates[0].grid_y, 5);
+}
