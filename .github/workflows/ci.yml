@@ -286,3 +286,21 @@ jobs:
         run: |
           uv run pytest tools/test_tools.py -v
           uv run pytest tests/test_telemetry.py -v
+
+  sensys-test:
+    name: Magnetometer Survey — 10 GoogleTests (ubuntu, no Qt)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure (standalone survey_processor lib)
+        run: >
+          cmake -S magnetometer_survey_visualizer/lib/survey_processor -B build-sensys
+          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+
+      - name: Build
+        run: cmake --build build-sensys --parallel
+
+      - name: Run 10 GoogleTests
+        run: ctest --test-dir build-sensys --output-on-failure -V
