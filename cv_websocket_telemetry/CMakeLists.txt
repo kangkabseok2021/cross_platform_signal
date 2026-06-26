@@ -60,3 +60,14 @@ target_link_libraries(telemetry_server PUBLIC Boost::system)
 if(NOT MSVC)
     target_compile_options(telemetry_server PRIVATE -Wall -Wextra)
 endif()
+
+# ── cv_ws_telemetry (main executable) ────────────────────────────────────────
+add_executable(cv_ws_telemetry src/main.cpp)
+target_link_libraries(cv_ws_telemetry PRIVATE
+    image_processor serializer telemetry_server opencv_videoio)
+
+# ── test_integration ─────────────────────────────────────────────────────────
+add_executable(test_integration tests/test_integration.cpp)
+target_link_libraries(test_integration PRIVATE
+    telemetry_server serializer GTest::gtest_main)
+gtest_discover_tests(test_integration PROPERTIES TIMEOUT 15)
