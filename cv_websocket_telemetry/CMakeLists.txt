@@ -35,3 +35,16 @@ include(GoogleTest)
 add_executable(test_image_processor tests/test_image_processor.cpp)
 target_link_libraries(test_image_processor PRIVATE image_processor opencv_imgproc GTest::gtest_main)
 gtest_discover_tests(test_image_processor)
+
+# ── serializer ────────────────────────────────────────────────────────────────
+add_library(serializer STATIC src/Serializer.cpp)
+target_include_directories(serializer PUBLIC include)
+target_link_libraries(serializer PUBLIC nlohmann_json::nlohmann_json)
+if(NOT MSVC)
+    target_compile_options(serializer PRIVATE -Wall -Wextra)
+endif()
+
+# ── test_serializer ───────────────────────────────────────────────────────
+add_executable(test_serializer tests/test_serializer.cpp)
+target_link_libraries(test_serializer PRIVATE serializer GTest::gtest_main)
+gtest_discover_tests(test_serializer)
