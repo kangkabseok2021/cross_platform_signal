@@ -48,3 +48,15 @@ endif()
 add_executable(test_serializer tests/test_serializer.cpp)
 target_link_libraries(test_serializer PRIVATE serializer GTest::gtest_main)
 gtest_discover_tests(test_serializer)
+
+# ── telemetry_server ──────────────────────────────────────────────────────────
+add_library(telemetry_server STATIC
+    src/Session.cpp
+    src/SessionManager.cpp
+    src/TelemetryServer.cpp
+)
+target_include_directories(telemetry_server PUBLIC include)
+target_link_libraries(telemetry_server PUBLIC Boost::system)
+if(NOT MSVC)
+    target_compile_options(telemetry_server PRIVATE -Wall -Wextra)
+endif()
