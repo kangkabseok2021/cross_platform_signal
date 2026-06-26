@@ -19,4 +19,4 @@ class CvWsTelemetryConan(ConanFile):
         deps.generate()
 
     def layout(self):
-        cmake_layout(self)
+        self.folders.generators = "."
