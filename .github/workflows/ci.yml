@@ -304,3 +304,65 @@ jobs:
 
       - name: Run 10 GoogleTests
         run: ctest --test-dir build-sensys --output-on-failure -V
+
+  cv-telemetry-test:
+    name: CV WebSocket Telemetry — 13 GoogleTests (ubuntu-24.04 + Conan 2)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            cmake ninja-build g++ libgtk2.0-dev pkg-config
+
+      - name: Install Conan
+        run: pip install conan
+
+      - name: Detect Conan profile
+        run: conan profile detect --force
+
+      - name: Cache Conan packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.conan2/p
+          key: conan2-ubuntu24-${{ hashFiles('cv_websocket_telemetry/conanfile.py') }}
+          restore-keys: conan2-ubuntu24-
+
+      - name: Conan install
+        working-directory: cv_websocket_telemetry
+        run: conan install . --output-folder=build --build=missing -s build_type=Release
+
+      - name: Configure
+        working-directory: cv_websocket_telemetry
+        run: cmake --preset linux
+
+      - name: Build all targets
+        working-directory: cv_websocket_telemetry
+        run: cmake --build --preset linux --parallel
+
+      - name: Run 13 GoogleTests
+        working-directory: cv_websocket_telemetry
+        run: ctest --test-dir build/linux --output-on-failure -V
+
+  cv-telemetry-docker:
+    name: CV WebSocket Telemetry — Docker build + WS smoke test
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        working-directory: cv_websocket_telemetry
+        run: docker build -t cv_ws_telemetry .
+
+      - name: Start server in background
+        run: docker run --rm -p 9001:9001 cv_ws_telemetry &
+
+      - name: Install Python websockets
+        run: pip install websockets
+
+      - name: Wait for server and run smoke test
+        run: |
+          sleep 8
+          python3 cv_websocket_telemetry/scripts/ws_client_ci.py
