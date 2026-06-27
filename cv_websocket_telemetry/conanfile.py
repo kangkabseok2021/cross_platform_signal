@@ -8,7 +8,6 @@ class CvWsTelemetryConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
 
     def requirements(self):
-        self.requires("opencv/4.9.0")
         self.requires("boost/1.85.0")
         self.requires("nlohmann_json/3.11.3")
 

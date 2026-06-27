@@ -315,7 +315,8 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends \
-            cmake ninja-build g++ libgtk2.0-dev pkg-config
+            cmake ninja-build g++ libgtk2.0-dev pkg-config \
+            libopencv-dev
 
       - name: Install Conan
         run: pip install conan

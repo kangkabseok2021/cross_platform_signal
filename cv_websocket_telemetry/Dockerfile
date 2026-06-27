@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential cmake ninja-build g++ \
         python3-pip pkg-config git \
-        libgtk2.0-dev \
+        libgtk2.0-dev libopencv-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install conan --break-system-packages && conan profile detect
@@ -25,6 +25,7 @@ FROM ubuntu:24.04 AS runtime
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
         libgomp1 libgtk2.0-0 libglib2.0-0 libgl1 \
+        libopencv-core4.6t64 libopencv-imgproc4.6t64 libopencv-videoio4.6t64 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /src/build/docker/cv_ws_telemetry /app/cv_ws_telemetry
