@@ -14,7 +14,7 @@ WORKDIR /src
 
 # Cache Conan packages separately from source copy
 COPY conanfile.py .
-RUN conan install . --output-folder=build --build=missing -s build_type=Release
+RUN conan install . --output-folder=build --build=missing -s build_type=Release -c tools.system.package_manager:mode=install
 
 COPY . .
 RUN cmake --preset docker && cmake --build --preset docker --parallel

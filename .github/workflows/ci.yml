@@ -332,7 +332,7 @@ jobs:
 
       - name: Conan install
         working-directory: cv_websocket_telemetry
-        run: conan install . --output-folder=build --build=missing -s build_type=Release
+        run: conan install . --output-folder=build --build=missing -s build_type=Release -c tools.system.package_manager:mode=install
 
       - name: Configure
         working-directory: cv_websocket_telemetry
