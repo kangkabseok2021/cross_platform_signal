@@ -35,7 +35,11 @@ int main(int argc, char** argv) {
 
     cv::Mat  frame;
     uint64_t dropped = 0;
-    while (cap.read(frame)) {
+    for (;;) {
+        if (!cap.read(frame)) {
+            cap.set(cv::CAP_PROP_POS_FRAMES, 0);
+            continue;
+        }
         auto result = proc.processFrame(frame);
         if (mgr.clientCount() > 0)
             mgr.broadcast(Serializer::toJson(result).dump());

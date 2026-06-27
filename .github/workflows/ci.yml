@@ -357,8 +357,8 @@ jobs:
         working-directory: cv_websocket_telemetry
         run: docker build -t cv_ws_telemetry .
 
-      - name: Start server in background
-        run: docker run --rm -p 9001:9001 cv_ws_telemetry &
+      - name: Start server
+        run: docker run -d --name cv_ws_test -p 9001:9001 cv_ws_telemetry
 
       - name: Install Python websockets
         run: pip install websockets
@@ -367,3 +367,7 @@ jobs:
         run: |
           sleep 8
           python3 cv_websocket_telemetry/scripts/ws_client_ci.py
+
+      - name: Dump container logs
+        if: always()
+        run: docker logs cv_ws_test 2>&1 || true
