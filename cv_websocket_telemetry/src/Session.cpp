@@ -2,14 +2,16 @@
 
 Session::Session(tcp::socket socket) : ws_(std::move(socket)) {}
 
-void Session::start() {
-    ws_.async_accept([self = shared_from_this()](beast::error_code ec) {
-        self->onAccept(ec);
-    });
+void Session::start(std::function<void()> on_ready) {
+    ws_.async_accept(
+        [self = shared_from_this(), cb = std::move(on_ready)](beast::error_code ec) mutable {
+            self->onAccept(ec, std::move(cb));
+        });
 }
 
-void Session::onAccept(beast::error_code ec) {
+void Session::onAccept(beast::error_code ec, std::function<void()> on_ready) {
     if (ec) return;
+    if (on_ready) on_ready();
     doRead();
 }
 

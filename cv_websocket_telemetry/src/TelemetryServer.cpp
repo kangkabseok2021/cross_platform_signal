@@ -23,8 +23,7 @@ void TelemetryServer::doAccept() {
         [this](beast::error_code ec, tcp::socket socket) {
             if (!ec) {
                 auto s = std::make_shared<Session>(std::move(socket));
-                mgr_.add(s);
-                s->start();
+                s->start([this, s]() { mgr_.add(s); });
             }
             if (!ioc_.stopped()) doAccept();
         });
