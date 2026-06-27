@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  telemetry-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9001:9001"
+    volumes:
+      - ./tests/fixtures:/app/fixtures:ro
+    environment:
+      INPUT: /app/fixtures/test_input.mp4
+    restart: "on-failure:3"
+
+  ws-client:
+    image: python:3.12-slim
+    depends_on:
+      - telemetry-server
+    command: >
+      sh -c "pip install websockets --quiet &&
+             sleep 4 &&
+             python3 /scripts/ws_client.py"
+    volumes:
+      - ./scripts:/scripts:ro
+    environment:
+      WS_URL: ws://telemetry-server:9001
