@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   telemetry-server:
     build:
@@ -8,8 +7,6 @@ services:
       - "9001:9001"
     volumes:
       - ./tests/fixtures:/app/fixtures:ro
-    environment:
-      INPUT: /app/fixtures/test_input.mp4
     restart: "on-failure:3"
 
   ws-client:
