@@ -1,7 +1,0 @@
-module AcousticEngine
-typeinfo acoustic_app.qmltypes
-prefer :/AcousticEngine/
-HeatmapView 1.0 qml/HeatmapView.qml
-SourceMarker 1.0 qml/SourceMarker.qml
-depends QtQuick
-

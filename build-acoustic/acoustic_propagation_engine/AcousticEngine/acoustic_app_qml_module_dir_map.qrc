@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file alias="/AcousticEngine">/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/AcousticEngine</file>
-
-  </qresource>
-</RCC>

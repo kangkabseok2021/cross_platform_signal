@@ -1,5 +1,0 @@
-module SensysApp
-typeinfo magnetometer_survey_app.qmltypes
-prefer :/SensysApp/
-depends QtQuick
-

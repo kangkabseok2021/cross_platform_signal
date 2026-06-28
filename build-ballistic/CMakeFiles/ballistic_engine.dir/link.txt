@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -dynamiclib -Wl,-headerpad_max_install_names -o libballistic_engine.dylib -install_name @rpath/libballistic_engine.dylib CMakeFiles/ballistic_engine.dir/src/rk4.cpp.o CMakeFiles/ballistic_engine.dir/src/engine.cpp.o CMakeFiles/ballistic_engine.dir/src/c_api.cpp.o

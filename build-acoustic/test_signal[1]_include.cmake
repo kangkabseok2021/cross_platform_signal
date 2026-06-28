@@ -1,5 +1,0 @@
-if(EXISTS "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/test_signal[1]_tests.cmake")
-  include("/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/test_signal[1]_tests.cmake")
-else()
-  add_test(test_signal_NOT_BUILT test_signal_NOT_BUILT)
-endif()

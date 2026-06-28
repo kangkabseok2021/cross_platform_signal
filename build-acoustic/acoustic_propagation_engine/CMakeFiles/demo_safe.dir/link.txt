@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/demo_safe.dir/legacy/demo_safe.c.o -o demo_safe  libacoustic_legacy.a -lm

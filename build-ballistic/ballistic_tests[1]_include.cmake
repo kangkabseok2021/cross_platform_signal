@@ -1,5 +1,0 @@
-if(EXISTS "/Users/kab/Projects/Portfolio/cross_platform_signal/build-ballistic/ballistic_tests[1]_tests.cmake")
-  include("/Users/kab/Projects/Portfolio/cross_platform_signal/build-ballistic/ballistic_tests[1]_tests.cmake")
-else()
-  add_test(ballistic_tests_NOT_BUILT ballistic_tests_NOT_BUILT)
-endif()

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmesh_engine_lib.a CMakeFiles/mesh_engine_lib.dir/src/AdvancingFront2D.cpp.o CMakeFiles/mesh_engine_lib.dir/src/DelaunayMesh3D.cpp.o CMakeFiles/mesh_engine_lib.dir/src/MeshQuality.cpp.o CMakeFiles/mesh_engine_lib.dir/src/LaplacianSmoother.cpp.o CMakeFiles/mesh_engine_lib.dir/src/MeshExporter.cpp.o
-/usr/bin/ranlib libmesh_engine_lib.a

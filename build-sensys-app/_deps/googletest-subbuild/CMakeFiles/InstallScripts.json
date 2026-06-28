@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/_deps/googletest-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

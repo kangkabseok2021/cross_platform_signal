@@ -1,4 +1,5 @@
 build/
+build-*/
 data/
 *.db
 __pycache__/

@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/SensysApp">
-    <file alias="qmldir">/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/SensysApp/qmldir</file>
-  </qresource>
-</RCC>
-

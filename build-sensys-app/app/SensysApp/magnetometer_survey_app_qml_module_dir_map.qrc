@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file alias="/SensysApp">/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/SensysApp</file>
-
-  </qresource>
-</RCC>
