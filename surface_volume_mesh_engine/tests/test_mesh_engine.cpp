@@ -132,3 +132,23 @@ TEST(Delaunay3D, VtkFileWritten) {
     EXPECT_GT(std::filesystem::file_size(p), 0u);
     std::filesystem::remove(p);
 }
+
+// ---- MeshQuality tests --------------------------------------------------
+
+TEST(MeshQuality, EquilateralTriangleAspectRatio) {
+    // Equilateral triangle has aspect_ratio = 1.0
+    Mesh2D m;
+    m.nodes = {{0,0}, {1,0}, {0.5, std::sqrt(3.0)/2.0}};
+    m.tris  = {{ {0,1,2} }};
+    double ar = aspect_ratio_2d(m, m.tris[0]);
+    EXPECT_NEAR(ar, 1.0, 1e-6);
+}
+
+TEST(MeshQuality, CoplanarTetFlaggedInverted) {
+    // Four nearly coplanar points → tet_volume ≈ 0 → classified as inverted
+    Mesh3D m3;
+    m3.nodes = {{0,0,0},{1,0,0},{0,1,0},{0.5,0.5,1e-14}};
+    m3.tets  = {{ {0,1,2,3} }};
+    double jac = jacobian_det(m3, m3.tets[0]);
+    EXPECT_NEAR(jac, 0.0, 1e-10);
+}
