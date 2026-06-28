@@ -1,0 +1,15 @@
+IirFilter.LowCutoff_AlphaNearZero 1 0.00342275
+IirFilter.HighCutoff_AlphaSignificant 1 0.00171092
+IirFilter.StepResponse_SettlesAtTau 1 0.00164312
+IirFilter.OutputBoundedByInput 1 0.00176225
+IirFilter.SetCutoff_ClampsToRange 1 0.00180571
+AudioRingBuffer.EmptyOnInit 1 0.0015305
+AudioRingBuffer.PushPop_SingleElement 1 0.00210446
+AudioRingBuffer.FifoOrder 1 0.00182304
+AudioRingBuffer.FullReturnsFalse 1 0.00162771
+AudioRingBuffer.Available_Correct 1 0.00166267
+AudioEngine.InjectOverrun_CountedInDiagnostics 1 0.00163088
+AudioEngine.SamplesProcessed_AfterRun 1 0.307496
+AudioEngine.Waveform_HasNonzeroValues 1 0.3127
+test_audio_qt 2 0.334828
+---

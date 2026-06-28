@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/_deps/pybind11-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

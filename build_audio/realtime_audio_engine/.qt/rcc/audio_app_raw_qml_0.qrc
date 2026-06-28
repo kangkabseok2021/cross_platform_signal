@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/AudioEngine/">
+    <file alias="qml/main.qml">/Users/kab/Projects/Portfolio/cross_platform_signal/realtime_audio_engine/qml/main.qml</file>
+    <file alias="qml/RotaryKnob.qml">/Users/kab/Projects/Portfolio/cross_platform_signal/realtime_audio_engine/qml/RotaryKnob.qml</file>
+    <file alias="qml/WaveformView.qml">/Users/kab/Projects/Portfolio/cross_platform_signal/realtime_audio_engine/qml/WaveformView.qml</file>
+  </qresource>
+</RCC>
+

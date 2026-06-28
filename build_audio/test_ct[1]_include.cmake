@@ -1,0 +1,5 @@
+if(EXISTS "/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/test_ct[1]_tests.cmake")
+  include("/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/test_ct[1]_tests.cmake")
+else()
+  add_test(test_ct_NOT_BUILT test_ct_NOT_BUILT)
+endif()

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libct_core.a CMakeFiles/ct_core.dir/ct_core/src/FilterBank.cpp.o CMakeFiles/ct_core.dir/ct_core/src/Reconstructor.cpp.o
+/usr/bin/ranlib libct_core.a

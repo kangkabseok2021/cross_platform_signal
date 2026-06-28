@@ -1,0 +1,11 @@
+Simulator.DipoleAnomalyPeakAboveNoiseFloor 6 0.000576701
+Simulator.ZigZagCoversAllGridCells 7 0.000232226
+Simulator.DeterministicReplay 8 0.000201474
+SignalProcessing.GaussianSmootherSpreadsSingleSpike 4 0.000410948
+SignalProcessing.BaselineSubtractorZerosRowMeans 4 0.000397917
+SignalProcessing.RmsMatchesManualFormula 4 0.000416458
+SignalProcessing.AnomalyDetectorFindsInjectedPeak 4 0.000400719
+SignalProcessing.NonMaxSuppressionRetainsOnlyHigherPeak 4 0.000391979
+Exporter.CsvContainsMandatoryColumns 2 0.000813146
+Exporter.GeoJsonHasFeaturesArray 2 0.00080825
+---

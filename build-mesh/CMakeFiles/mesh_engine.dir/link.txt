@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -bundle -Wl,-headerpad_max_install_names -Xlinker -undefined -Xlinker dynamic_lookup -flto -o /Users/kab/Projects/Portfolio/cross_platform_signal/surface_volume_mesh_engine/python/mesh_engine.cpython-314-darwin.so CMakeFiles/mesh_engine.dir/python/bindings.cpp.o  libmesh_engine_lib.a

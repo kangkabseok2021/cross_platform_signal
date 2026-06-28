@@ -1,0 +1,408 @@
+Start testing: Jun 01 00:12 CEST
+----------------------------------------------------------
+1/15 Testing: InverseSquareLaw.r1_dB_approx_Lw_minus_11
+1/15 Test: InverseSquareLaw.r1_dB_approx_Lw_minus_11
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=InverseSquareLaw.r1_dB_approx_Lw_minus_11" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"InverseSquareLaw.r1_dB_approx_Lw_minus_11" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = InverseSquareLaw.r1_dB_approx_Lw_minus_11
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InverseSquareLaw
+[ RUN      ] InverseSquareLaw.r1_dB_approx_Lw_minus_11
+[       OK ] InverseSquareLaw.r1_dB_approx_Lw_minus_11 (0 ms)
+[----------] 1 test from InverseSquareLaw (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"InverseSquareLaw.r1_dB_approx_Lw_minus_11" end time: Jun 01 00:12 CEST
+"InverseSquareLaw.r1_dB_approx_Lw_minus_11" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/15 Testing: InverseSquareLaw.r10_dB_approx_Lw_minus_31
+2/15 Test: InverseSquareLaw.r10_dB_approx_Lw_minus_31
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=InverseSquareLaw.r10_dB_approx_Lw_minus_31" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"InverseSquareLaw.r10_dB_approx_Lw_minus_31" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = InverseSquareLaw.r10_dB_approx_Lw_minus_31
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InverseSquareLaw
+[ RUN      ] InverseSquareLaw.r10_dB_approx_Lw_minus_31
+[       OK ] InverseSquareLaw.r10_dB_approx_Lw_minus_31 (0 ms)
+[----------] 1 test from InverseSquareLaw (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"InverseSquareLaw.r10_dB_approx_Lw_minus_31" end time: Jun 01 00:12 CEST
+"InverseSquareLaw.r10_dB_approx_Lw_minus_31" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/15 Testing: InverseSquareLaw.r100_dB_approx_Lw_minus_51
+3/15 Test: InverseSquareLaw.r100_dB_approx_Lw_minus_51
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=InverseSquareLaw.r100_dB_approx_Lw_minus_51" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"InverseSquareLaw.r100_dB_approx_Lw_minus_51" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = InverseSquareLaw.r100_dB_approx_Lw_minus_51
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InverseSquareLaw
+[ RUN      ] InverseSquareLaw.r100_dB_approx_Lw_minus_51
+[       OK ] InverseSquareLaw.r100_dB_approx_Lw_minus_51 (0 ms)
+[----------] 1 test from InverseSquareLaw (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"InverseSquareLaw.r100_dB_approx_Lw_minus_51" end time: Jun 01 00:12 CEST
+"InverseSquareLaw.r100_dB_approx_Lw_minus_51" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/15 Testing: InverseSquareLaw.ZeroRadius_NoNaNOrInf
+4/15 Test: InverseSquareLaw.ZeroRadius_NoNaNOrInf
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=InverseSquareLaw.ZeroRadius_NoNaNOrInf" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"InverseSquareLaw.ZeroRadius_NoNaNOrInf" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = InverseSquareLaw.ZeroRadius_NoNaNOrInf
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from InverseSquareLaw
+[ RUN      ] InverseSquareLaw.ZeroRadius_NoNaNOrInf
+[       OK ] InverseSquareLaw.ZeroRadius_NoNaNOrInf (0 ms)
+[----------] 1 test from InverseSquareLaw (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"InverseSquareLaw.ZeroRadius_NoNaNOrInf" end time: Jun 01 00:12 CEST
+"InverseSquareLaw.ZeroRadius_NoNaNOrInf" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/15 Testing: SabineModel.RT60_Correct
+5/15 Test: SabineModel.RT60_Correct
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=SabineModel.RT60_Correct" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"SabineModel.RT60_Correct" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = SabineModel.RT60_Correct
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SabineModel
+[ RUN      ] SabineModel.RT60_Correct
+[       OK ] SabineModel.RT60_Correct (0 ms)
+[----------] 1 test from SabineModel (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SabineModel.RT60_Correct" end time: Jun 01 00:12 CEST
+"SabineModel.RT60_Correct" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/15 Testing: SabineModel.SPL_IsFinite
+6/15 Test: SabineModel.SPL_IsFinite
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=SabineModel.SPL_IsFinite" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"SabineModel.SPL_IsFinite" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = SabineModel.SPL_IsFinite
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SabineModel
+[ RUN      ] SabineModel.SPL_IsFinite
+[       OK ] SabineModel.SPL_IsFinite (0 ms)
+[----------] 1 test from SabineModel (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"SabineModel.SPL_IsFinite" end time: Jun 01 00:12 CEST
+"SabineModel.SPL_IsFinite" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/15 Testing: AcousticEngine.Grid_Size_NxM
+7/15 Test: AcousticEngine.Grid_Size_NxM
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=AcousticEngine.Grid_Size_NxM" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"AcousticEngine.Grid_Size_NxM" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AcousticEngine.Grid_Size_NxM
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AcousticEngine
+[ RUN      ] AcousticEngine.Grid_Size_NxM
+[       OK ] AcousticEngine.Grid_Size_NxM (0 ms)
+[----------] 1 test from AcousticEngine (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AcousticEngine.Grid_Size_NxM" end time: Jun 01 00:12 CEST
+"AcousticEngine.Grid_Size_NxM" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/15 Testing: AcousticEngine.Grid_AllFinite
+8/15 Test: AcousticEngine.Grid_AllFinite
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=AcousticEngine.Grid_AllFinite" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"AcousticEngine.Grid_AllFinite" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AcousticEngine.Grid_AllFinite
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AcousticEngine
+[ RUN      ] AcousticEngine.Grid_AllFinite
+[       OK ] AcousticEngine.Grid_AllFinite (0 ms)
+[----------] 1 test from AcousticEngine (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AcousticEngine.Grid_AllFinite" end time: Jun 01 00:12 CEST
+"AcousticEngine.Grid_AllFinite" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/15 Testing: AcousticEngine.StrategySwap_GridsDiffer
+9/15 Test: AcousticEngine.StrategySwap_GridsDiffer
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=AcousticEngine.StrategySwap_GridsDiffer" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"AcousticEngine.StrategySwap_GridsDiffer" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AcousticEngine.StrategySwap_GridsDiffer
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AcousticEngine
+[ RUN      ] AcousticEngine.StrategySwap_GridsDiffer
+[       OK ] AcousticEngine.StrategySwap_GridsDiffer (0 ms)
+[----------] 1 test from AcousticEngine (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AcousticEngine.StrategySwap_GridsDiffer" end time: Jun 01 00:12 CEST
+"AcousticEngine.StrategySwap_GridsDiffer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/15 Testing: AcousticEngine.StrategySwap_SwapBack_Restores
+10/15 Test: AcousticEngine.StrategySwap_SwapBack_Restores
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=AcousticEngine.StrategySwap_SwapBack_Restores" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"AcousticEngine.StrategySwap_SwapBack_Restores" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = AcousticEngine.StrategySwap_SwapBack_Restores
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from AcousticEngine
+[ RUN      ] AcousticEngine.StrategySwap_SwapBack_Restores
+[       OK ] AcousticEngine.StrategySwap_SwapBack_Restores (0 ms)
+[----------] 1 test from AcousticEngine (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AcousticEngine.StrategySwap_SwapBack_Restores" end time: Jun 01 00:12 CEST
+"AcousticEngine.StrategySwap_SwapBack_Restores" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/15 Testing: LegacyCParity.MatchesWithin1e4dB
+11/15 Test: LegacyCParity.MatchesWithin1e4dB
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=LegacyCParity.MatchesWithin1e4dB" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"LegacyCParity.MatchesWithin1e4dB" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LegacyCParity.MatchesWithin1e4dB
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LegacyCParity
+[ RUN      ] LegacyCParity.MatchesWithin1e4dB
+[       OK ] LegacyCParity.MatchesWithin1e4dB (0 ms)
+[----------] 1 test from LegacyCParity (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LegacyCParity.MatchesWithin1e4dB" end time: Jun 01 00:12 CEST
+"LegacyCParity.MatchesWithin1e4dB" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/15 Testing: GridDispatcher.AsyncMatchesSerial
+12/15 Test: GridDispatcher.AsyncMatchesSerial
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=GridDispatcher.AsyncMatchesSerial" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"GridDispatcher.AsyncMatchesSerial" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GridDispatcher.AsyncMatchesSerial
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GridDispatcher
+[ RUN      ] GridDispatcher.AsyncMatchesSerial
+[       OK ] GridDispatcher.AsyncMatchesSerial (0 ms)
+[----------] 1 test from GridDispatcher (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"GridDispatcher.AsyncMatchesSerial" end time: Jun 01 00:12 CEST
+"GridDispatcher.AsyncMatchesSerial" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/15 Testing: ConstexprParams.AirAbsorption_1kHz
+13/15 Test: ConstexprParams.AirAbsorption_1kHz
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=ConstexprParams.AirAbsorption_1kHz" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"ConstexprParams.AirAbsorption_1kHz" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ConstexprParams.AirAbsorption_1kHz
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ConstexprParams
+[ RUN      ] ConstexprParams.AirAbsorption_1kHz
+[       OK ] ConstexprParams.AirAbsorption_1kHz (0 ms)
+[----------] 1 test from ConstexprParams (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ConstexprParams.AirAbsorption_1kHz" end time: Jun 01 00:12 CEST
+"ConstexprParams.AirAbsorption_1kHz" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/15 Testing: ModelMeta.ISL_NameNonEmpty
+14/15 Test: ModelMeta.ISL_NameNonEmpty
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=ModelMeta.ISL_NameNonEmpty" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"ModelMeta.ISL_NameNonEmpty" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ModelMeta.ISL_NameNonEmpty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ModelMeta
+[ RUN      ] ModelMeta.ISL_NameNonEmpty
+[       OK ] ModelMeta.ISL_NameNonEmpty (0 ms)
+[----------] 1 test from ModelMeta (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ModelMeta.ISL_NameNonEmpty" end time: Jun 01 00:12 CEST
+"ModelMeta.ISL_NameNonEmpty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/15 Testing: ModelMeta.Sabine_NameNonEmpty
+15/15 Test: ModelMeta.Sabine_NameNonEmpty
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/test_acoustic_core" "--gtest_filter=ModelMeta.Sabine_NameNonEmpty" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+"ModelMeta.Sabine_NameNonEmpty" start time: Jun 01 00:12 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ModelMeta.Sabine_NameNonEmpty
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ModelMeta
+[ RUN      ] ModelMeta.Sabine_NameNonEmpty
+[       OK ] ModelMeta.Sabine_NameNonEmpty (0 ms)
+[----------] 1 test from ModelMeta (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ModelMeta.Sabine_NameNonEmpty" end time: Jun 01 00:12 CEST
+"ModelMeta.Sabine_NameNonEmpty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 01 00:12 CEST

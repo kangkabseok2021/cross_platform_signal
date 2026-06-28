@@ -1,0 +1,123 @@
+{
+  "tests": 15,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "InverseSquareLaw",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "r1_dB_approx_Lw_minus_11",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 17
+        },
+        {
+          "name": "r10_dB_approx_Lw_minus_31",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 24
+        },
+        {
+          "name": "r100_dB_approx_Lw_minus_51",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 31
+        },
+        {
+          "name": "ZeroRadius_NoNaNOrInf",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "name": "SabineModel",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "RT60_Correct",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 46
+        },
+        {
+          "name": "SPL_IsFinite",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "name": "AcousticEngine",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "Grid_Size_NxM",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 59
+        },
+        {
+          "name": "Grid_AllFinite",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 67
+        },
+        {
+          "name": "StrategySwap_GridsDiffer",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 75
+        },
+        {
+          "name": "StrategySwap_SwapBack_Restores",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "name": "LegacyCParity",
+      "tests": 1,
+      "testsuite": [
+        {
+          "name": "MatchesWithin1e4dB",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 107
+        }
+      ]
+    },
+    {
+      "name": "GridDispatcher",
+      "tests": 1,
+      "testsuite": [
+        {
+          "name": "AsyncMatchesSerial",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 133
+        }
+      ]
+    },
+    {
+      "name": "ConstexprParams",
+      "tests": 1,
+      "testsuite": [
+        {
+          "name": "AirAbsorption_1kHz",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 158
+        }
+      ]
+    },
+    {
+      "name": "ModelMeta",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "ISL_NameNonEmpty",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 166
+        },
+        {
+          "name": "Sabine_NameNonEmpty",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/acoustic_propagation_engine\/tests\/test_acoustic_core.cpp",
+          "line": 172
+        }
+      ]
+    }
+  ]
+}

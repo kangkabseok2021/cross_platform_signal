@@ -1,0 +1,14 @@
+-rootPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/acoustic_propagation_engine
+-cmake-output
+-output-file
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/.qt/qml_imports/acoustic_app_build.cmake
+-importPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine
+-importPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/AcousticEngine
+-importPath
+/opt/homebrew/share/qt/qml
+-qrcFiles
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/.qt/rcc/qmake_AcousticEngine.qrc
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/.qt/rcc/acoustic_app_raw_qml_0.qrc

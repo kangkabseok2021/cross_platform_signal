@@ -1,0 +1,14 @@
+-rootPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/realtime_audio_engine
+-cmake-output
+-output-file
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/.qt/qml_imports/audio_app_conf.cmake
+-importPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine
+-importPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/AudioEngine
+-importPath
+/opt/homebrew/share/qt/qml
+-qrcFiles
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/.qt/rcc/qmake_AudioEngine.qrc
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/.qt/rcc/audio_app_raw_qml_0.qrc

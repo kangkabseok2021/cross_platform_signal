@@ -1,0 +1,7 @@
+module AudioEngine
+typeinfo audio_app.qmltypes
+prefer :/AudioEngine/
+RotaryKnob 1.0 qml/RotaryKnob.qml
+WaveformView 1.0 qml/WaveformView.qml
+depends QtQuick
+

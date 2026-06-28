@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/test_acoustic_core.dir/tests/test_acoustic_core.cpp.o -o test_acoustic_core  libacoustic_core.a libacoustic_legacy.a ../lib/libgtest_main.a ../lib/libgtest.a

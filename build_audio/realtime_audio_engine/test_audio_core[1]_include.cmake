@@ -1,0 +1,5 @@
+if(EXISTS "/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/test_audio_core[1]_tests.cmake")
+  include("/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/test_audio_core[1]_tests.cmake")
+else()
+  add_test(test_audio_core_NOT_BUILT test_audio_core_NOT_BUILT)
+endif()

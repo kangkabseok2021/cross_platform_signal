@@ -1,0 +1,2 @@
+/usr/bin/ar qc libacoustic_core.a CMakeFiles/acoustic_core.dir/src/AcousticEngine.cpp.o
+/usr/bin/ranlib libacoustic_core.a

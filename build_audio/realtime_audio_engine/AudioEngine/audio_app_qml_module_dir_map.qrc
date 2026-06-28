@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/AudioEngine">/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/AudioEngine</file>
+
+  </qresource>
+</RCC>

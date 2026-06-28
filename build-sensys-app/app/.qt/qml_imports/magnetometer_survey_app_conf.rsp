@@ -1,0 +1,14 @@
+-rootPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/magnetometer_survey_visualizer/app
+-cmake-output
+-output-file
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/.qt/qml_imports/magnetometer_survey_app_conf.cmake
+-importPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app
+-importPath
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/SensysApp
+-importPath
+/opt/homebrew/share/qt/qml
+-qrcFiles
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/.qt/rcc/qmake_SensysApp.qrc
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/.qt/rcc/magnetometer_survey_app_raw_qml_0.qrc

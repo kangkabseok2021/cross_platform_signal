@@ -1,6 +1,5 @@
 #include "LaplacianSmoother.h"
 #include <algorithm>
-#include <numeric>
 
 Mesh2D laplacian_smooth_2d(Mesh2D mesh, const std::vector<bool>& is_boundary, int n_iter) {
     int N = (int)mesh.nodes.size();
@@ -24,8 +23,7 @@ Mesh2D laplacian_smooth_2d(Mesh2D mesh, const std::vector<bool>& is_boundary, in
             for (int j : adj[i]) { sx += mesh.nodes[j].x; sy += mesh.nodes[j].y; }
             double cx = sx / adj[i].size();
             double cy = sy / adj[i].size();
-            // Damped smoothing: move lightly toward centroid
-            new_nodes[i] = {0.99 * mesh.nodes[i].x + 0.01 * cx, 0.99 * mesh.nodes[i].y + 0.01 * cy};
+            new_nodes[i] = Point2D{cx, cy};
         }
         mesh.nodes = new_nodes;
     }

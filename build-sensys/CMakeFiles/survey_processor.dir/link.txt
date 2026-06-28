@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsurvey_processor.a CMakeFiles/survey_processor.dir/src/GradiometerSimulator.cpp.o CMakeFiles/survey_processor.dir/src/GaussianSmoother.cpp.o CMakeFiles/survey_processor.dir/src/BaselineSubtractor.cpp.o CMakeFiles/survey_processor.dir/src/RmsCalculator.cpp.o CMakeFiles/survey_processor.dir/src/AnomalyDetector.cpp.o CMakeFiles/survey_processor.dir/src/AnomalyExporter.cpp.o
+/usr/bin/ranlib libsurvey_processor.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsqlite3_bundled.a CMakeFiles/sqlite3_bundled.dir/third_party/sqlite3.c.o
+/usr/bin/ranlib libsqlite3_bundled.a

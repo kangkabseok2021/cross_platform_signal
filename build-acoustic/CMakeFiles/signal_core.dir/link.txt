@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsignal_core.a CMakeFiles/signal_core.dir/src/FftAnalyser.cpp.o CMakeFiles/signal_core.dir/src/ButterworthFilter.cpp.o CMakeFiles/signal_core.dir/src/SqliteLogger.cpp.o CMakeFiles/signal_core.dir/src/SignalProcessor.cpp.o
+/usr/bin/ranlib libsignal_core.a

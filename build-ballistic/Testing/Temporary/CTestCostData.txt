@@ -1,0 +1,9 @@
+RK4Test.NoDragMatchesAnalyticRange 1 0.00679408
+RK4Test.MaxAltitudeMatchesAnalytic 1 0.00238187
+EngineTest.NulloptOnZeroElevation 1 0.00177337
+EngineTest.NulloptOnNegativeVelocity 1 0.001642
+EngineTest.NulloptOnElevation90deg 1 0.00180946
+EngineTest.Artillery155ReturnsNonEmptyVector 1 0.00191237
+EngineTest.DragReducesRangeVsNoDrag 1 0.00189625
+EngineTest.APFSDS120FlatterThanMortar81 1 0.00221612
+---

@@ -1,0 +1,37 @@
+Start testing: Jun 28 23:33 CEST
+----------------------------------------------------------
+14/14 Testing: LaplacianSmoother.SmoothingImprovesAspectRatio
+14/14 Test: LaplacianSmoother.SmoothingImprovesAspectRatio
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/test_mesh_engine" "--gtest_filter=LaplacianSmoother.SmoothingImprovesAspectRatio" "--gtest_also_run_disabled_tests"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh
+"LaplacianSmoother.SmoothingImprovesAspectRatio" start time: Jun 28 23:33 CEST
+Output:
+----------------------------------------------------------
+Running main() from /Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LaplacianSmoother.SmoothingImprovesAspectRatio
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LaplacianSmoother
+[ RUN      ] LaplacianSmoother.SmoothingImprovesAspectRatio
+/Users/kab/Projects/Portfolio/cross_platform_signal/surface_volume_mesh_engine/tests/test_mesh_engine.cpp:167: Failure
+Expected: (q_after.mean_aspect_ratio) <= (q_before.mean_aspect_ratio + 0.05), actual: 289530.5258444171 vs 1.6842269598350013
+
+[  FAILED  ] LaplacianSmoother.SmoothingImprovesAspectRatio (0 ms)
+[----------] 1 test from LaplacianSmoother (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] LaplacianSmoother.SmoothingImprovesAspectRatio
+
+ 1 FAILED TEST
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"LaplacianSmoother.SmoothingImprovesAspectRatio" end time: Jun 28 23:33 CEST
+"LaplacianSmoother.SmoothingImprovesAspectRatio" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 28 23:33 CEST

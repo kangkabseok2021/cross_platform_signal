@@ -1,0 +1,7 @@
+--resource
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/.qt/rcc/qmake_AudioEngine.qrc
+--resource
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/.qt/rcc/audio_app_raw_qml_0.qrc
+/AudioEngine/qml/main.qml
+/AudioEngine/qml/RotaryKnob.qml
+/AudioEngine/qml/WaveformView.qml

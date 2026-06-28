@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-build/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/_deps/googletest-build/googletest/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

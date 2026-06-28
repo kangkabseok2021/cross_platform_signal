@@ -1,0 +1,40 @@
+Start testing: May 30 14:33 CEST
+----------------------------------------------------------
+17/17 Testing: test_audio_qt
+17/17 Test: test_audio_qt
+Command: "/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/test_audio_qt"
+Directory: /Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine
+"test_audio_qt" start time: May 30 14:33 CEST
+Output:
+----------------------------------------------------------
+********* Start testing of TestPresetRepository *********
+Config: Using QtTest library 6.11.0, Qt 6.11.0 (arm64-little_endian-lp64 shared (dynamic) release build; by Apple LLVM 21.0.0 (clang-2100.0.123.102)), macos 26.5.0
+PASS   : TestPresetRepository::initTestCase()
+PASS   : TestPresetRepository::testSaveAndLoad_RoundTrip()
+PASS   : TestPresetRepository::testUniqueName_Rejected()
+PASS   : TestPresetRepository::testCutoffBelowRange_Rejected()
+PASS   : TestPresetRepository::testRemove_DeletesRow()
+PASS   : TestPresetRepository::cleanupTestCase()
+Totals: 6 passed, 0 failed, 0 skipped, 0 blacklisted, 6ms
+********* Finished testing of TestPresetRepository *********
+********* Start testing of TestAudioWrapper *********
+Config: Using QtTest library 6.11.0, Qt 6.11.0 (arm64-little_endian-lp64 shared (dynamic) release build; by Apple LLVM 21.0.0 (clang-2100.0.123.102)), macos 26.5.0
+PASS   : TestAudioWrapper::initTestCase()
+PASS   : TestAudioWrapper::testCutoff_EmitsSignal()
+PASS   : TestAudioWrapper::testCutoff_ClampsToRange()
+PASS   : TestAudioWrapper::testWaveform_PopulatesAfter300ms()
+PASS   : TestAudioWrapper::testPreset_RoundTrip()
+SKIP   : TestAudioWrapper::testOverrun_DetectedAfterInject() Overrun injection tested in test_audio_core (GoogleTest)
+   Loc: [/Users/kab/Projects/Portfolio/cross_platform_signal/realtime_audio_engine/tests/test_audio_qt.cpp(124)]
+PASS   : TestAudioWrapper::cleanupTestCase()
+Totals: 6 passed, 0 failed, 1 skipped, 0 blacklisted, 304ms
+********* Finished testing of TestAudioWrapper *********
+<end of output>
+Test time =   0.67 sec
+----------------------------------------------------------
+Test Passed.
+"test_audio_qt" end time: May 30 14:33 CEST
+"test_audio_qt" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 30 14:33 CEST

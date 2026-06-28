@@ -1,0 +1,89 @@
+{
+  "tests": 13,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "IirFilter",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "LowCutoff_AlphaNearZero",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 15
+        },
+        {
+          "name": "HighCutoff_AlphaSignificant",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 22
+        },
+        {
+          "name": "StepResponse_SettlesAtTau",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 29
+        },
+        {
+          "name": "OutputBoundedByInput",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 44
+        },
+        {
+          "name": "SetCutoff_ClampsToRange",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 58
+        }
+      ]
+    },
+    {
+      "name": "AudioRingBuffer",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "EmptyOnInit",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 71
+        },
+        {
+          "name": "PushPop_SingleElement",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 78
+        },
+        {
+          "name": "FifoOrder",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 86
+        },
+        {
+          "name": "FullReturnsFalse",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 100
+        },
+        {
+          "name": "Available_Correct",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "name": "AudioEngine",
+      "tests": 3,
+      "testsuite": [
+        {
+          "name": "InjectOverrun_CountedInDiagnostics",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 121
+        },
+        {
+          "name": "SamplesProcessed_AfterRun",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 127
+        },
+        {
+          "name": "Waveform_HasNonzeroValues",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/realtime_audio_engine\/tests\/test_audio_core.cpp",
+          "line": 135
+        }
+      ]
+    }
+  ]
+}

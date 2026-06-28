@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/SensysApp/">
+    <file alias="qml/main.qml">/Users/kab/Projects/Portfolio/cross_platform_signal/magnetometer_survey_visualizer/app/qml/main.qml</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/AcousticEngine">
+    <file alias="qmldir">/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/AcousticEngine/qmldir</file>
+  </qresource>
+</RCC>
+

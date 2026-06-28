@@ -1,0 +1,7 @@
+--resource
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/.qt/rcc/qmake_AcousticEngine.qrc
+--resource
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-acoustic/acoustic_propagation_engine/.qt/rcc/acoustic_app_raw_qml_0.qrc
+/AcousticEngine/qml/main.qml
+/AcousticEngine/qml/HeatmapView.qml
+/AcousticEngine/qml/SourceMarker.qml

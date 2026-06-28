@@ -1,0 +1,16 @@
+--bare
+-I
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine
+-I
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/AudioEngine
+-I
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine
+-I
+/opt/homebrew/share/qt/qml
+--resource
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/.qt/rcc/qmake_AudioEngine.qrc
+--resource
+/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/.qt/rcc/audio_app_raw_qml_0.qrc
+/Users/kab/Projects/Portfolio/cross_platform_signal/realtime_audio_engine/qml/main.qml
+/Users/kab/Projects/Portfolio/cross_platform_signal/realtime_audio_engine/qml/RotaryKnob.qml
+/Users/kab/Projects/Portfolio/cross_platform_signal/realtime_audio_engine/qml/WaveformView.qml

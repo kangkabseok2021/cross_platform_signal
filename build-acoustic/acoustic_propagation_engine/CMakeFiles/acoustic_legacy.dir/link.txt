@@ -1,0 +1,2 @@
+/usr/bin/ar qc libacoustic_legacy.a CMakeFiles/acoustic_legacy.dir/legacy/acoustic.c.o
+/usr/bin/ranlib libacoustic_legacy.a

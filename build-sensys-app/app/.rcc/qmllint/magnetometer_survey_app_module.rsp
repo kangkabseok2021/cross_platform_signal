@@ -1,0 +1,14 @@
+-I
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app
+-I
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/SensysApp
+-I
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app
+-I
+/opt/homebrew/share/qt/qml
+--resource
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/.qt/rcc/qmake_SensysApp.qrc
+--resource
+/Users/kab/Projects/Portfolio/cross_platform_signal/build-sensys-app/app/.qt/rcc/magnetometer_survey_app_raw_qml_0.qrc
+--module
+SensysApp

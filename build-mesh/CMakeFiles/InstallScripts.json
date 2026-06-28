@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/_deps/googletest-build/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/_deps/googletest-build/googletest/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/_deps/pybind11-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/AcousticEngine/">
+    <file alias="qml/main.qml">/Users/kab/Projects/Portfolio/cross_platform_signal/acoustic_propagation_engine/qml/main.qml</file>
+    <file alias="qml/HeatmapView.qml">/Users/kab/Projects/Portfolio/cross_platform_signal/acoustic_propagation_engine/qml/HeatmapView.qml</file>
+    <file alias="qml/SourceMarker.qml">/Users/kab/Projects/Portfolio/cross_platform_signal/acoustic_propagation_engine/qml/SourceMarker.qml</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,74 @@
+{
+  "tests": 10,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "Simulator",
+      "tests": 3,
+      "testsuite": [
+        {
+          "name": "DipoleAnomalyPeakAboveNoiseFloor",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 18
+        },
+        {
+          "name": "ZigZagCoversAllGridCells",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 37
+        },
+        {
+          "name": "DeterministicReplay",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "name": "SignalProcessing",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "GaussianSmootherSpreadsSingleSpike",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 71
+        },
+        {
+          "name": "BaselineSubtractorZerosRowMeans",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 88
+        },
+        {
+          "name": "RmsMatchesManualFormula",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 105
+        },
+        {
+          "name": "AnomalyDetectorFindsInjectedPeak",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 111
+        },
+        {
+          "name": "NonMaxSuppressionRetainsOnlyHigherPeak",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 123
+        }
+      ]
+    },
+    {
+      "name": "Exporter",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "CsvContainsMandatoryColumns",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 138
+        },
+        {
+          "name": "GeoJsonHasFeaturesArray",
+          "file": "\/Users\/kab\/Projects\/Portfolio\/cross_platform_signal\/magnetometer_survey_visualizer\/lib\/survey_processor\/tests\/test_survey_processor.cpp",
+          "line": 162
+        }
+      ]
+    }
+  ]
+}

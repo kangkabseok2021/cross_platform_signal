@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/_deps/googletest-build/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/_deps/googletest-build/googletest/cmake_install.cmake",
+		"/Users/kab/Projects/Portfolio/cross_platform_signal/build_audio/realtime_audio_engine/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

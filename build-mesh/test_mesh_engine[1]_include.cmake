@@ -1,0 +1,5 @@
+if(EXISTS "/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/test_mesh_engine[1]_tests.cmake")
+  include("/Users/kab/Projects/Portfolio/cross_platform_signal/build-mesh/test_mesh_engine[1]_tests.cmake")
+else()
+  add_test(test_mesh_engine_NOT_BUILT test_mesh_engine_NOT_BUILT)
+endif()
