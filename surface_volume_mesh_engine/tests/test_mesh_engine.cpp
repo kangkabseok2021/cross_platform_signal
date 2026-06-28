@@ -152,3 +152,17 @@ TEST(MeshQuality, CoplanarTetFlaggedInverted) {
     double jac = jacobian_det(m3, m3.tets[0]);
     EXPECT_NEAR(jac, 0.0, 1e-10);
 }
+
+// ---- LaplacianSmoother tests --------------------------------------------
+
+TEST(LaplacianSmoother, SmoothingImprovesAspectRatio) {
+    // Dense mesh of a rectangle — interior nodes should improve after smoothing
+    std::vector<Point2D> sq = {{0,0},{4,0},{4,4},{0,4}};
+    AdvancingFront2D afm(0.7);
+    auto m = afm.mesh(sq);
+    auto q_before = quality_report_2d(m);
+    auto smoothed = laplacian_smooth_2d(m, 4, 10);
+    auto q_after  = quality_report_2d(smoothed);
+    // Smoothing must not worsen mean aspect ratio beyond a small tolerance
+    EXPECT_LE(q_after.mean_aspect_ratio, q_before.mean_aspect_ratio + 0.05);
+}
