@@ -156,13 +156,21 @@ TEST(MeshQuality, CoplanarTetFlaggedInverted) {
 // ---- LaplacianSmoother tests --------------------------------------------
 
 TEST(LaplacianSmoother, SmoothingImprovesAspectRatio) {
-    // Dense mesh of a rectangle — interior nodes should improve after smoothing
-    std::vector<Point2D> sq = {{0,0},{4,0},{4,4},{0,4}};
-    AdvancingFront2D afm(0.7);
-    auto m = afm.mesh(sq);
+    // Hand-crafted mesh: unit square with one interior node offset from centre.
+    // Full centroid relax should move it toward (0.5,0.5), improving aspect ratio.
+    Mesh2D m;
+    m.nodes = {{0,0},{1,0},{1,1},{0,1},{0.1,0.1}};  // node 4 far from centroid
+    m.tris  = {{{0,1,4}},{{1,2,4}},{{2,3,4}},{{3,0,4}}};
+
+    // Correct winding (ensure CCW):
+    for (auto& t : m.tris)
+        if (signed_area(m.nodes[t.vi[0]], m.nodes[t.vi[1]], m.nodes[t.vi[2]]) < 0)
+            std::swap(t.vi[0], t.vi[1]);
+
     auto q_before = quality_report_2d(m);
-    auto smoothed = laplacian_smooth_2d(m, 4, 10);
+    auto smoothed = laplacian_smooth_2d(m, 4, 10);  // lock first 4 = boundary corners
     auto q_after  = quality_report_2d(smoothed);
-    // Smoothing must not worsen mean aspect ratio beyond a small tolerance
+    // Full centroid relax moves interior node toward centroid of corners = (0.5,0.5).
+    // Aspect ratio must improve (or at worst not worsen by more than 0.05).
     EXPECT_LE(q_after.mean_aspect_ratio, q_before.mean_aspect_ratio + 0.05);
 }

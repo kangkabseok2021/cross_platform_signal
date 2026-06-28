@@ -1,16 +1,15 @@
-AFM2D.ProducesTriangles 11 0.000232599
-AFM2D.BoundaryNodesPreserved 11 0.000191879
-AFM2D.NoInvertedElements 11 0.000175568
-AFM2D.TriangleCountScalesWithH 11 0.000183504
-AFM2D.SnapDeduplication 11 0.000170553
-AFM2D.NonEmptyForPolygon 11 0.000172182
-Delaunay3D.ProducesTetrahedra 9 0.000218296
-Delaunay3D.NoSuperTetVertices 10 0.000178208
-Delaunay3D.PositiveVolumeAllTets 9 0.000209218
-Delaunay3D.CircumspherePropertySmallSet 10 0.000167142
-Delaunay3D.VtkFileWritten 10 0.000184258
-MeshQuality.EquilateralTriangleAspectRatio 7 0.000235821
-MeshQuality.CoplanarTetFlaggedInverted 7 0.000234566
-LaplacianSmoother.SmoothingImprovesAspectRatio 3 0
+AFM2D.ProducesTriangles 12 0.000193434
+AFM2D.BoundaryNodesPreserved 12 0.000150285
+AFM2D.NoInvertedElements 12 0.000141194
+AFM2D.TriangleCountScalesWithH 12 0.000138514
+AFM2D.SnapDeduplication 12 0.000153413
+AFM2D.NonEmptyForPolygon 12 0.00015099
+Delaunay3D.ProducesTetrahedra 10 0.000172533
+Delaunay3D.NoSuperTetVertices 11 0.000158095
+Delaunay3D.PositiveVolumeAllTets 10 0.000180658
+Delaunay3D.CircumspherePropertySmallSet 11 0.000145489
+Delaunay3D.VtkFileWritten 11 0.000169045
+MeshQuality.EquilateralTriangleAspectRatio 8 0.000193604
+MeshQuality.CoplanarTetFlaggedInverted 8 0.000187912
+LaplacianSmoother.SmoothingImprovesAspectRatio 4 0.000369177
 ---
-LaplacianSmoother.SmoothingImprovesAspectRatio
