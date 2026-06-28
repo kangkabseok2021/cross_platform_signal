@@ -1,5 +1,17 @@
 #include "MeshExporter.h"
 #include <fstream>
+#include <stdexcept>
+
+void export_obj(const Mesh2D& mesh, const std::filesystem::path& path) {
+    std::ofstream f(path);
+    if (!f) throw std::runtime_error("Cannot open: " + path.string());
+    f << "# surface mesh nodes=" << mesh.nodes.size()
+      << " tris=" << mesh.tris.size() << "\n";
+    for (auto& n : mesh.nodes)
+        f << "v " << n.x << " " << n.y << " 0.0\n";
+    for (auto& t : mesh.tris)
+        f << "f " << t.vi[0]+1 << " " << t.vi[1]+1 << " " << t.vi[2]+1 << "\n";
+}
 
 void export_vtk(const Mesh3D& mesh, const std::filesystem::path& path) {
     std::ofstream out(path);

@@ -6,6 +6,7 @@
 #include "MeshExporter.h"
 #include <cmath>
 #include <filesystem>
+#include <fstream>
 #include <algorithm>
 
 // ---- AFM 2D tests -------------------------------------------------------
@@ -173,4 +174,27 @@ TEST(LaplacianSmoother, SmoothingImprovesAspectRatio) {
     // Full centroid relax moves interior node toward centroid of corners = (0.5,0.5).
     // Aspect ratio must improve (or at worst not worsen by more than 0.05).
     EXPECT_LE(q_after.mean_aspect_ratio, q_before.mean_aspect_ratio + 0.05);
+}
+
+// ---- MeshExporter tests -------------------------------------------------
+
+TEST(MeshExporter, ObjRoundTrip) {
+    Mesh2D m;
+    m.nodes = {{0,0},{1,0},{0.5,0.866}};
+    m.tris  = {{ {0,1,2} }};
+    auto p = std::filesystem::temp_directory_path() / "test_tri.obj";
+    export_obj(m, p);
+    EXPECT_TRUE(std::filesystem::exists(p));
+
+    // Parse back: count v and f lines
+    std::ifstream rf(p);
+    int v_count=0, f_count=0;
+    std::string line;
+    while (std::getline(rf, line)) {
+        if (line.size()>=2 && line[0]=='v' && line[1]==' ') ++v_count;
+        if (line.size()>=2 && line[0]=='f' && line[1]==' ') ++f_count;
+    }
+    EXPECT_EQ(v_count, 3);
+    EXPECT_EQ(f_count, 1);
+    std::filesystem::remove(p);
 }
