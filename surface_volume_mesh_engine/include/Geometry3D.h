@@ -36,5 +36,5 @@ inline bool circumsphere_contains(const Point3D& a, const Point3D& b,
                - ay*d3(bx,bz,br, cx,cz,cr, dx,dz,dr)
                + az*d3(bx,by,br, cx,cy,cr, dx,dy,dr)
                - ar*d3(bx,by,bz, cx,cy,cz, dx,dy,dz);
-    return det > 0.0;
+    return det < 0.0;
 }

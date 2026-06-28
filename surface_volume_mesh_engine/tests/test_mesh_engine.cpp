@@ -70,3 +70,65 @@ TEST(AFM2D, NonEmptyForPolygon) {
     for (auto& t : m.tris)
         EXPECT_GT(signed_area(m.nodes[t.vi[0]], m.nodes[t.vi[1]], m.nodes[t.vi[2]]), 0.0);
 }
+
+// ---- Delaunay 3D tests --------------------------------------------------
+
+TEST(Delaunay3D, ProducesTetrahedra) {
+    std::vector<Point3D> pts = {{0,0,0},{1,0,0},{0,1,0},{0,0,1},{0.5,0.5,0.5}};
+    DelaunayMesh3D d;
+    auto m = d.triangulate(pts);
+    EXPECT_GE(m.tets.size(), 1u);
+}
+
+TEST(Delaunay3D, NoSuperTetVertices) {
+    std::vector<Point3D> pts = {{0,0,0},{1,0,0},{0,1,0},{0,0,1},{1,1,0},{1,0,1}};
+    DelaunayMesh3D d;
+    auto m = d.triangulate(pts);
+    // All tet vertex indices must be in [0, pts.size()-1]
+    for (auto& t : m.tets)
+        for (int v : t.vi)
+            EXPECT_LT(v, (int)pts.size());
+}
+
+TEST(Delaunay3D, PositiveVolumeAllTets) {
+    std::vector<Point3D> pts;
+    for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+            for (int k = 0; k < 3; ++k)
+                pts.push_back({(double)i, (double)j, (double)k});
+    DelaunayMesh3D d;
+    auto m = d.triangulate(pts);
+    EXPECT_EQ(m.n_inverted, 0);
+    for (auto& t : m.tets)
+        EXPECT_GT(tet_volume(m.nodes[t.vi[0]], m.nodes[t.vi[1]],
+                             m.nodes[t.vi[2]], m.nodes[t.vi[3]]), 0.0);
+}
+
+TEST(Delaunay3D, CircumspherePropertySmallSet) {
+    // For N<=6 non-coplanar points, check Delaunay property exhaustively
+    std::vector<Point3D> pts = {{0,0,0},{1,0,0},{0,1,0},{0,0,1},{0.25,0.25,0.25}};
+    DelaunayMesh3D d;
+    auto m = d.triangulate(pts);
+    for (auto& t : m.tets) {
+        for (int pi = 0; pi < (int)pts.size(); ++pi) {
+            bool is_vert = false;
+            for (int v : t.vi) if (v == pi) { is_vert = true; break; }
+            if (is_vert) continue;
+            // No other input point should be strictly inside the circumsphere
+            EXPECT_FALSE(circumsphere_contains(m.nodes[t.vi[0]], m.nodes[t.vi[1]],
+                                               m.nodes[t.vi[2]], m.nodes[t.vi[3]],
+                                               pts[pi]));
+        }
+    }
+}
+
+TEST(Delaunay3D, VtkFileWritten) {
+    std::vector<Point3D> pts = {{0,0,0},{1,0,0},{0,1,0},{0,0,1},{0.5,0.5,0.5}};
+    DelaunayMesh3D d;
+    auto m = d.triangulate(pts);
+    std::filesystem::path p = std::filesystem::temp_directory_path() / "test_out.vtk";
+    export_vtk(m, p);
+    EXPECT_TRUE(std::filesystem::exists(p));
+    EXPECT_GT(std::filesystem::file_size(p), 0u);
+    std::filesystem::remove(p);
+}
