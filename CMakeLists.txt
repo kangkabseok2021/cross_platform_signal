@@ -199,3 +199,8 @@ option(BUILD_SENSYS "Build Magnetometer Survey Visualizer" OFF)
 if(BUILD_SENSYS)
   add_subdirectory(magnetometer_survey_visualizer)
 endif()
+
+option(BUILD_MESH "Build Surface/Volume Mesh Generation Engine" OFF)
+if(BUILD_MESH)
+  add_subdirectory(surface_volume_mesh_engine)
+endif()
