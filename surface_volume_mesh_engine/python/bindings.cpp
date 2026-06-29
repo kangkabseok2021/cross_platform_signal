@@ -36,8 +36,8 @@ PYBIND11_MODULE(mesh_engine, mod) {
             quality["frac_below_20deg"]  = qs.frac_below_20deg;
 
             py::dict result;
-            result["nodes"]     = nodes;
-            result["triangles"] = tris;
+            result["nodes"] = nodes;
+            result["tris"]  = tris;
             result["quality"]   = quality;
             return result;
         }, py::arg("points"), py::arg("h"));

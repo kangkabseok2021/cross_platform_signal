@@ -11,14 +11,14 @@ def test_module_imports():
 def test_mesh_2d_non_empty():
     pts = [[0,0],[1,0],[1,1],[0,1]]
     r = mesh_engine.mesh_2d(pts, 0.5)
-    assert len(r['triangles']) >= 2
+    assert len(r['tris']) >= 2
 
 def test_no_inverted_elements():
     n = 12
     pts = [[math.cos(2*math.pi*i/n), math.sin(2*math.pi*i/n)] for i in range(n)]
     r = mesh_engine.mesh_2d(pts, 0.4)
     nodes = r['nodes']
-    for t in r['triangles']:
+    for t in r['tris']:
         ax, ay = nodes[t[0]]; bx, by = nodes[t[1]]; cx, cy = nodes[t[2]]
         area = 0.5 * ((bx-ax)*(cy-ay) - (cx-ax)*(by-ay))
         assert area > 0, f"Inverted triangle: {t}"
