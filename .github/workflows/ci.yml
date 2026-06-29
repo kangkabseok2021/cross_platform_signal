@@ -371,3 +371,28 @@ jobs:
       - name: Dump container logs
         if: always()
         run: docker logs cv_ws_test 2>&1 || true
+
+  surface-volume-mesh-engine-test:
+    name: Surface/Volume Mesh Engine — 15 GoogleTests + 5 pytest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+
+      - name: Install Python dev headers (for pybind11)
+        run: sudo apt-get update -qq && sudo apt-get install -y python3-dev
+
+      - name: Configure (standalone subproject)
+        run: >
+          cmake -S surface_volume_mesh_engine -B build-mesh
+          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_POLICY_DEFAULT_CMP0135=NEW
+
+      - name: Build library + tests + pybind11 module
+        run: cmake --build build-mesh --parallel
+
+      - name: Run 15 GoogleTests
+        run: ctest --test-dir build-mesh --output-on-failure -V
+
+      - name: Run 5 pytest (pybind11 module)
+        run: uv run --directory surface_volume_mesh_engine pytest python/test_mesh_python.py -v
