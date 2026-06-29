@@ -1,6 +1,7 @@
 import sys, os, time, math
 sys.path.insert(0, os.path.dirname(__file__))
 import mesh_engine
+me = mesh_engine
 
 def test_module_imports():
     assert hasattr(mesh_engine, 'mesh_2d')
@@ -22,14 +23,16 @@ def test_no_inverted_elements():
         area = 0.5 * ((bx-ax)*(cy-ay) - (cx-ax)*(by-ay))
         assert area > 0, f"Inverted triangle: {t}"
 
-def test_smoothing_does_not_worsen_quality():
-    pts = [[0,0],[3,0],[3,3],[0,3]]
-    r = mesh_engine.mesh_2d(pts, 0.6)
-    q_before = r['quality']['mean_aspect_ratio']
-    r2 = mesh_engine.smooth_2d(r['nodes'], r['triangles'], 5)
-    q_after = r2['quality']['mean_aspect_ratio']
-    # Smoothing must not significantly worsen aspect ratio
-    assert q_after <= q_before + 0.1, f"Smoothing worsened AR: {q_before:.3f} -> {q_after:.3f}"
+def test_SmoothingQuality():
+    # Hand-crafted mesh: unit square with one interior node offset from centre.
+    mesh = {
+        "nodes": [[0,0],[1,0],[1,1],[0,1],[0.1,0.1]],
+        "tris": [[0,1,4],[1,2,4],[2,3,4],[3,0,4]]
+    }
+    q_before = me.quality_report_2d(mesh)
+    smoothed = me.smooth_2d(mesh, 4, 10)
+    q_after = me.quality_report_2d(smoothed)
+    assert q_after["mean_aspect_ratio"] <= q_before["mean_aspect_ratio"] + 0.1
 
 def test_performance_polygon():
     n = 30
